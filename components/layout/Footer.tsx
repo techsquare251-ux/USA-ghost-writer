@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { services } from "@/src/data/services";
-import { CONTACT, SITE_NAME, SOCIAL_LINKS } from "@/lib/constants";
+import { CONTACT, SITE_NAME, SOCIAL_MEDIA_LOGOS } from "@/lib/constants";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -22,51 +23,24 @@ export function Footer() {
           </p>
 
           <div className="mt-5 flex items-center gap-3 text-brand-muted">
-            <a
-              href={SOCIAL_LINKS.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit us on Facebook"
-              className="rounded-md px-2 py-1 text-xs font-semibold transition-colors hover:bg-brand-green/10 hover:text-brand-green"
-            >
-              FB
-            </a>
-            <a
-              href={SOCIAL_LINKS.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit us on X"
-              className="rounded-md p-2 text-sm font-bold transition-colors hover:bg-brand-green/10 hover:text-brand-green"
-            >
-              X
-            </a>
-            <a
-              href={SOCIAL_LINKS.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit us on Instagram"
-              className="rounded-md px-2 py-1 text-xs font-semibold transition-colors hover:bg-brand-green/10 hover:text-brand-green"
-            >
-              IG
-            </a>
-            <a
-              href={SOCIAL_LINKS.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit us on YouTube"
-              className="rounded-md px-2 py-1 text-xs font-semibold transition-colors hover:bg-brand-green/10 hover:text-brand-green"
-            >
-              YT
-            </a>
-            <a
-              href={SOCIAL_LINKS.threads}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit us on Threads"
-              className="rounded-md px-2 py-1 text-xs font-semibold transition-colors hover:bg-brand-green/10 hover:text-brand-green"
-            >
-              Threads
-            </a>
+            {SOCIAL_MEDIA_LOGOS.map((social) => (
+              <a
+                key={social.key}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit us on ${social.name}`}
+                className="rounded-lg border border-brand-green/10 bg-white p-2 transition-colors hover:border-brand-green/30 hover:bg-brand-green/5"
+              >
+                <Image
+                  src={social.logo}
+                  alt={`${social.name} logo`}
+                  width={24}
+                  height={24}
+                  className="size-6 object-contain"
+                />
+              </a>
+            ))}
           </div>
         </div>
 

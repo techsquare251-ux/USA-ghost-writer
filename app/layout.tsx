@@ -17,13 +17,30 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pinebookpublishing.com"),
+  metadataBase: new URL("https://liblit.com"),
   title: {
-    default: "Pine Book Publishing",
-    template: "%s | Pine Book Publishing",
+    default: "Liblit Books Publishing",
+    template: "%s | Liblit Books Publishing",
   },
   description:
     "Professional self-publishing services for authors who want premium results.",
+  openGraph: {
+    type: "website",
+    siteName: "Liblit Books Publishing",
+    title: "Liblit Books Publishing",
+    description:
+      "Professional self-publishing services for authors who want premium results.",
+    url: "https://liblit.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Liblit Books Publishing",
+    description:
+      "Professional self-publishing services for authors who want premium results.",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

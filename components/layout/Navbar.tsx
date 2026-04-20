@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Menu, Phone } from "lucide-react";
 import { services } from "@/src/data/services";
 import { CONTACT, SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -54,12 +54,18 @@ export function Navbar() {
         <div className="mx-auto flex max-w-container items-center justify-between px-4 py-2 text-sm text-brand-muted">
           <p>Premium publishing support for ambitious authors.</p>
           <div className="flex items-center gap-6">
-            <a href={`tel:${CONTACT.salesPhone}`} className="hover:text-brand-green transition-colors">
+            <a href={`tel:${CONTACT.salesPhone}`} className="inline-flex items-center gap-2 transition-colors hover:text-brand-green">
+              <Phone className="size-4" aria-hidden="true" />
               {CONTACT.salesPhone}
             </a>
-            <a href={`mailto:${CONTACT.email}`} className="hover:text-brand-green transition-colors">
+            <a href={`mailto:${CONTACT.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-brand-green">
+              <Mail className="size-4" aria-hidden="true" />
               {CONTACT.email}
             </a>
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="size-4" aria-hidden="true" />
+              New York, USA
+            </span>
           </div>
         </div>
       </div>

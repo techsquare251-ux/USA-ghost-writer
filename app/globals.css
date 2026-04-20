@@ -8,6 +8,33 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .logo-marquee-mask {
+    @apply overflow-hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .logo-marquee-track {
+    @apply flex w-max items-center gap-4;
+    animation: logo-marquee 40s linear infinite;
+  }
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
 }
 
 @layer base {

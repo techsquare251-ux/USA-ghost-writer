@@ -10,7 +10,7 @@ export type Service = {
   icon: LucideIcon;
 };
 
-// TODO: Replace with real content copied from pinebookpublishing.com
+// TODO: Replace with real content copied from liblit.com
 export const services: Service[] = [
   {
     id: 1,
@@ -128,3 +128,9 @@ export const featuredServiceSlugs = [
   "book-marketing",
   "book-translation",
 ];
+
+export const serviceSlugs = services.map((service) => service.slug);
+
+export function getServiceBySlug(slug: string) {
+  return services.find((service) => service.slug === slug);
+}
