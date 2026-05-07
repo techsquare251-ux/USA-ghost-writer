@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { portfolioBooks, type PortfolioBook } from "@/src/data/portfolio";
 import { cn } from "@/lib/utils";
@@ -18,97 +18,116 @@ export function PortfolioSection() {
   const displayedBooks = active === "Published Books" ? portfolioBooks : portfolioBooks.slice(0, 4);
 
   useEffect(() => {
-    if (!selectedBook) {
-      return;
-    }
-
-    const onEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setSelectedBook(null);
-      }
+    if (!selectedBook) return;
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedBook(null);
     };
-
     window.addEventListener("keydown", onEsc);
     return () => window.removeEventListener("keydown", onEsc);
   }, [selectedBook]);
 
+  useEffect(() => {
+    if (selectedBook) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedBook]);
+
   const scrollByCardSet = (direction: "left" | "right") => {
     const container = trackRef.current;
-    if (!container) {
-      return;
-    }
-
+    if (!container) return;
     const amount = Math.max(container.clientWidth * 0.82, 260);
-    container.scrollBy({
-      left: direction === "right" ? amount : -amount,
-      behavior: "smooth",
-    });
+    container.scrollBy({ left: direction === "right" ? amount : -amount, behavior: "smooth" });
   };
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-gradient-to-b from-white via-brand-cream/60 to-white py-24">
       <div className="mx-auto max-w-container px-4">
         <SectionHeader
           centered
           eyebrow="Portfolio"
           title="Published Books"
-          subtitle="A selection of author projects delivered with editorial, design, and distribution support."
+          subtitle="A curated selection of author projects delivered with full editorial, design, and distribution support."
         />
 
-        <div className="mt-7 flex justify-center gap-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActive(tab)}
-              className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition",
-                active === tab
-                  ? "border-brand-green bg-brand-green text-white"
-                  : "border-brand-green/20 bg-white text-brand-muted hover:border-brand-green/35"
-              )}
-            >
-              {tab}
-            </button>
-          ))}
+        {/* Tab bar */}
+        <div className="mt-8 flex justify-center">
+          <div className="inline-flex rounded-full border border-brand-green/12 bg-white p-1 shadow-sm">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActive(tab)}
+                className={cn(
+                  "rounded-full px-5 py-2 text-sm font-medium transition-all duration-200",
+                  active === tab
+                    ? "bg-brand-green text-white shadow-sm"
+                    : "text-brand-muted hover:text-brand-charcoal"
+                )}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="relative mt-10">
+        {/* Carousel */}
+        <div className="relative mt-12">
           <button
             type="button"
             aria-label="Scroll books left"
             onClick={() => scrollByCardSet("left")}
-            className="absolute -left-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/20 bg-white p-2 text-brand-charcoal shadow-sm transition hover:border-brand-green/40 hover:text-brand-green md:block"
+            className="absolute -left-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/15 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-brand-green/35 hover:text-brand-green md:flex"
           >
-            <ChevronLeft className="size-5" aria-hidden="true" />
+            <ChevronLeft className="size-4" aria-hidden="true" />
           </button>
 
           <div
             ref={trackRef}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {displayedBooks.map((book) => (
               <article
                 key={book.id}
                 onClick={() => setSelectedBook(book)}
-                className="group w-[84%] shrink-0 cursor-pointer snap-start rounded-2xl border border-brand-green/10 bg-white p-4 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-[48%] md:w-[38%] lg:w-[31%] xl:w-[23%]"
+                className="group relative w-[80%] shrink-0 cursor-pointer snap-start sm:w-[46%] md:w-[36%] lg:w-[28%] xl:w-[22%]"
               >
-                <div className="mx-auto w-full max-w-[210px] [perspective:1000px]">
-                  <div className="relative overflow-hidden rounded-md border border-black/5 bg-white shadow-[10px_0_0_rgba(0,0,0,0.08),0_22px_24px_-20px_rgba(0,0,0,0.5)] transition duration-300 group-hover:shadow-[14px_0_0_rgba(0,0,0,0.1),0_28px_30px_-18px_rgba(0,0,0,0.55)]">
+                {/* Cover */}
+                <div className="relative overflow-hidden rounded-2xl shadow-[0_14px_36px_-20px_rgba(20,32,24,0.40)] transition-all duration-400 group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_48px_-20px_rgba(20,32,24,0.50)]">
+                  <div className="aspect-[2/3]">
                     <Image
                       src={book.coverImage}
                       alt={`${book.title} by ${book.author}`}
-                      width={400}
-                      height={600}
-                      className="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
+                  </div>
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 via-black/10 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-white/70">
+                      {book.genre}
+                    </p>
+                    <h3 className="mt-1 text-sm font-semibold leading-snug text-white line-clamp-2">
+                      {book.title}
+                    </h3>
+                    <p className="mt-0.5 text-xs text-white/65">{book.author}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 self-start rounded-full border border-white/35 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                      View Details
+                    </span>
                   </div>
                 </div>
 
-                <h3 className="mt-4 line-clamp-2 text-center text-base font-semibold leading-snug text-brand-charcoal">
-                  {book.title}
-                </h3>
-                <p className="mt-1 text-center text-sm text-brand-muted">by: {book.author}</p>
+                {/* Below-cover meta (visible by default, fades on hover) */}
+                <div className="mt-3 px-1 transition-opacity duration-300 group-hover:opacity-0">
+                  <h3 className="line-clamp-1 text-sm font-semibold text-brand-charcoal">
+                    {book.title}
+                  </h3>
+                  <p className="mt-0.5 text-xs text-brand-muted">{book.author}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -117,69 +136,95 @@ export function PortfolioSection() {
             type="button"
             aria-label="Scroll books right"
             onClick={() => scrollByCardSet("right")}
-            className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/20 bg-white p-2 text-brand-charcoal shadow-sm transition hover:border-brand-green/40 hover:text-brand-green md:block"
+            className="absolute -right-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/15 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-brand-green/35 hover:text-brand-green md:flex"
           >
-            <ChevronRight className="size-5" aria-hidden="true" />
+            <ChevronRight className="size-4" aria-hidden="true" />
           </button>
+        </div>
+
+        {/* View all link */}
+        <div className="mt-4 flex justify-center">
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-green transition hover:text-brand-green-light"
+          >
+            View full portfolio
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
       </div>
 
+      {/* Detail modal */}
       {selectedBook ? (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/50 px-4 py-8"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/40 px-4 py-8 backdrop-blur-sm"
           onClick={() => setSelectedBook(null)}
         >
           <div
             role="dialog"
             aria-modal="true"
             aria-label={`${selectedBook.title} details`}
-            className="relative grid w-full max-w-3xl gap-6 rounded-2xl bg-white p-5 shadow-2xl sm:p-6 md:grid-cols-[240px_1fr]"
-            onClick={(event) => event.stopPropagation()}
+            className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setSelectedBook(null)}
               aria-label="Close book details"
-              className="absolute right-4 top-4 rounded-full border border-brand-green/15 p-1.5 text-brand-charcoal transition hover:border-brand-green/35 hover:text-brand-green"
+              className="absolute right-5 top-5 z-10 rounded-full border border-brand-green/15 bg-white p-2 text-brand-charcoal shadow-sm transition hover:border-brand-green/35 hover:text-brand-green"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
 
-            <div className="mx-auto w-full max-w-[220px]">
-              <Image
-                src={selectedBook.coverImage}
-                alt={`${selectedBook.title} by ${selectedBook.author}`}
-                width={420}
-                height={630}
-                className="h-auto w-full rounded-lg object-cover shadow-lg"
-              />
-            </div>
+            <div className="grid sm:grid-cols-[200px_1fr]">
+              {/* Cover */}
+              <div className="relative h-56 sm:h-auto">
+                <Image
+                  src={selectedBook.coverImage}
+                  alt={`${selectedBook.title} by ${selectedBook.author}`}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/15 sm:bg-gradient-to-b" />
+              </div>
 
-            <div className="pt-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-green/80">Published Book</p>
-              <h3 className="mt-2 text-2xl font-semibold text-brand-charcoal">{selectedBook.title}</h3>
-              <p className="mt-1 text-sm text-brand-muted">by: {selectedBook.author}</p>
-              <p className="mt-4 text-sm leading-6 text-brand-muted">
-                {selectedBook.description ??
-                  `A ${selectedBook.genre.toLowerCase()} title delivered with end-to-end publishing support, from editorial refinement to distribution setup.`}
-              </p>
+              {/* Content */}
+              <div className="flex flex-col gap-4 p-7">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-green/80">
+                    {selectedBook.genre}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold leading-snug text-brand-charcoal">
+                    {selectedBook.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-brand-muted">by {selectedBook.author}</p>
+                </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href={selectedBook.amazonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-md bg-brand-green px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-green-light"
-                >
-                  Buy / View Book
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => setSelectedBook(null)}
-                  className="rounded-md border border-brand-green/20 px-4 py-2 text-sm font-semibold text-brand-charcoal transition hover:border-brand-green/35 hover:text-brand-green"
-                >
-                  Close
-                </button>
+                <div className="h-px bg-brand-green/8" />
+
+                <p className="flex-1 text-sm leading-relaxed text-brand-muted">
+                  {selectedBook.description ??
+                    `A ${selectedBook.genre.toLowerCase()} title delivered with end-to-end publishing support — from editorial refinement through to distribution setup.`}
+                </p>
+
+                <div className="flex flex-wrap gap-3 pt-1">
+                  <Link
+                    href={selectedBook.amazonUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-green-light"
+                  >
+                    Buy on Amazon
+                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedBook(null)}
+                    className="rounded-full border border-brand-green/20 px-5 py-2.5 text-sm font-semibold text-brand-charcoal transition hover:border-brand-green/40 hover:text-brand-green"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>

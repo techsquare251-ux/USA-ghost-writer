@@ -14,15 +14,20 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-brand-green/10 bg-white">
-      <div className="mx-auto grid max-w-container gap-10 px-4 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-brand-charcoal">
+      {/* Top accent gradient */}
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-green to-transparent opacity-60" />
+
+      <div className="mx-auto grid max-w-container gap-10 px-4 py-16 md:grid-cols-2 lg:grid-cols-4">
+        {/* Brand */}
         <div>
-          <p className="font-serif text-2xl font-semibold text-brand-green">{SITE_NAME}</p>
-          <p className="mt-4 text-sm leading-6 text-brand-muted">
-            Trusted publishing support for authors ready to launch with confidence.
+          <p className="font-serif text-2xl font-semibold text-white">{SITE_NAME}</p>
+          <p className="mt-4 text-sm leading-6 text-white/50">
+            Trusted publishing support for authors ready to launch their book with confidence and
+            clarity.
           </p>
 
-          <div className="mt-5 flex items-center gap-3 text-brand-muted">
+          <div className="mt-6 flex items-center gap-2.5">
             {SOCIAL_MEDIA_LOGOS.map((social) => (
               <a
                 key={social.key}
@@ -30,26 +35,32 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit us on ${social.name}`}
-                className="rounded-lg border border-brand-green/10 bg-white p-2 transition-colors hover:border-brand-green/30 hover:bg-brand-green/5"
+                className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:border-white/25 hover:bg-white/10"
               >
                 <Image
                   src={social.logo}
                   alt={`${social.name} logo`}
-                  width={24}
-                  height={24}
-                  className="size-6 object-contain"
+                  width={18}
+                  height={18}
+                  className="size-[18px] object-contain brightness-0 invert"
                 />
               </a>
             ))}
           </div>
         </div>
 
+        {/* Quick Links */}
         <div>
-          <h3 className="text-base font-semibold text-brand-charcoal">Quick Links</h3>
-          <ul className="mt-4 space-y-3 text-sm text-brand-muted">
+          <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
+            Quick Links
+          </h3>
+          <ul className="mt-5 space-y-2.5">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <Link className="hover:text-brand-green" href={link.href}>
+                <Link
+                  className="text-sm text-white/55 transition-colors hover:text-white"
+                  href={link.href}
+                >
                   {link.label}
                 </Link>
               </li>
@@ -57,12 +68,18 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Services */}
         <div>
-          <h3 className="text-base font-semibold text-brand-charcoal">Services</h3>
-          <ul className="mt-4 space-y-3 text-sm text-brand-muted">
+          <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
+            Services
+          </h3>
+          <ul className="mt-5 space-y-2.5">
             {services.slice(0, 7).map((service) => (
               <li key={service.slug}>
-                <Link className="hover:text-brand-green" href={`/services/${service.slug}`}>
+                <Link
+                  className="text-sm text-white/55 transition-colors hover:text-white"
+                  href={`/services/${service.slug}`}
+                >
                   {service.title}
                 </Link>
               </li>
@@ -70,28 +87,40 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Contact */}
         <div>
-          <h3 className="text-base font-semibold text-brand-charcoal">Contact Info</h3>
-          <div className="mt-4 space-y-3 text-sm text-brand-muted">
+          <h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
+            Contact
+          </h3>
+          <div className="mt-5 space-y-3 text-sm text-white/55">
             <p>
-              Sales: <a href={`tel:${CONTACT.salesPhone}`}>{CONTACT.salesPhone}</a>
+              Sales:{" "}
+              <a href={`tel:${CONTACT.salesPhone}`} className="transition-colors hover:text-white">
+                {CONTACT.salesPhone}
+              </a>
             </p>
             <p>
-              Support: <a href={`tel:${CONTACT.supportPhone}`}>{CONTACT.supportPhone}</a>
+              Support:{" "}
+              <a href={`tel:${CONTACT.supportPhone}`} className="transition-colors hover:text-white">
+                {CONTACT.supportPhone}
+              </a>
             </p>
             <p>
-              Email: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              Email:{" "}
+              <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-white">
+                {CONTACT.email}
+              </a>
             </p>
-            <p>{CONTACT.canadaAddress}</p>
-            <p>{CONTACT.usaAddress}</p>
+            <div className="space-y-1 pt-2 text-xs text-white/30">
+              <p>{CONTACT.canadaAddress}</p>
+              <p>{CONTACT.usaAddress}</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-brand-green/10 py-5 text-center text-sm text-brand-muted">
-        <p>
-          © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
-        </p>
+      <div className="border-t border-white/[0.06] py-6 text-center text-xs text-white/25">
+        © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
       </div>
     </footer>
   );

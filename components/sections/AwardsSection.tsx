@@ -4,7 +4,7 @@ import { awards } from "@/src/data/awards";
 
 export function AwardsSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-gradient-to-b from-white to-brand-cream/50 py-24">
       <div className="mx-auto max-w-container px-4">
         <SectionHeader
           centered
@@ -13,14 +13,28 @@ export function AwardsSection() {
           subtitle="Badges and recognitions reflecting our commitment to dependable publishing quality."
         />
 
-        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {awards.map((award) => (
-            <article key={award.id} className="rounded-xl border border-brand-green/10 bg-brand-cream p-4">
-              <div className="overflow-hidden rounded-lg border border-brand-green/10 bg-white">
-                <Image src={award.image} alt={award.name} width={240} height={240} className="h-40 w-full object-cover" />
+            <article
+              key={award.id}
+              className="group overflow-hidden rounded-2xl border border-brand-green/8 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-green/20 hover:shadow-[0_16px_40px_-12px_rgba(20,32,24,0.12)]"
+            >
+              <div className="relative h-44 overflow-hidden bg-brand-cream">
+                <Image
+                  src={award.image}
+                  alt={award.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent"
+                />
               </div>
-              <h3 className="mt-4 text-base font-semibold text-brand-charcoal">{award.name}</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-muted">{award.description}</p>
+              <div className="p-5">
+                <h3 className="text-base font-semibold text-brand-charcoal">{award.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-brand-muted">{award.description}</p>
+              </div>
             </article>
           ))}
         </div>

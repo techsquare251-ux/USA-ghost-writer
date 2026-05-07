@@ -19,20 +19,54 @@
     @apply flex w-max items-center gap-4;
     animation: logo-marquee 40s linear infinite;
   }
+
+  .text-gradient-green {
+    background: linear-gradient(135deg, #2D5016 0%, #3D6B20 60%, #4a8026 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
 }
 
 @keyframes logo-marquee {
-  from {
-    transform: translateX(0);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
-  to {
-    transform: translateX(-50%);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.7); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer-slide {
+  from { background-position: -200% center; }
+  to   { background-position: 200% center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .logo-marquee-track {
+    animation: none;
+  }
+  .animate-float,
+  .animate-pulse-dot {
     animation: none;
   }
 }
@@ -91,12 +125,7 @@
     @apply scroll-smooth;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
 }
