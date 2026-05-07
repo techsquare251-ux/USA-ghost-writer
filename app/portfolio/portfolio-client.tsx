@@ -6,11 +6,16 @@ import { BookCard } from "@/components/common/BookCard";
 
 const genres: Array<"All" | PortfolioGenre> = [
   "All",
-  "Fiction",
-  "Non-Fiction",
   "Children's",
-  "Poetry",
+  "Cookbook",
+  "Graphic Novel",
+  "Health & Wellness",
+  "Leadership",
   "Memoir",
+  "Non-Fiction",
+  "Planner",
+  "Religion & Spirituality",
+  "Self-Help",
 ];
 
 export function PortfolioClient() {
