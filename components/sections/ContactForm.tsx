@@ -25,7 +25,7 @@ export function ContactForm({
 }: ContactFormProps) {
   const [serverMessage, setServerMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL ?? "").replace(/\/+$/, "");
   const {
     control,
     register,
