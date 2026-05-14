@@ -1,10 +1,10 @@
-# Liblit Books Publishing — Next.js Rebuild: Agent Planning Document
+# USA Ghost Writer — Next.js Rebuild: Agent Planning Document
 
 ---
 
 ## 1. Project Overview
 
-Rebuild **liblit.com** in Next.js 14 (App Router) with a cleaner, more minimal, and professional UI.  
+Rebuild **usaghostwriter.com** in Next.js 14 (App Router) with a cleaner, more minimal, and professional UI.  
 The redesign keeps all content and functionality from the original but strips visual noise, improves hierarchy, and creates a trustworthy brand impression befitting a premium publishing service.
 
 **Core design philosophy:**  
@@ -350,7 +350,7 @@ fontFamily: {
 ## 8. SEO & Metadata
 
 - Use `generateMetadata()` in every page file
-- Root layout: global title template `%s | Liblit Books Publishing`
+- Root layout: global title template `%s | USA Ghost Writer`
 - Each page: unique title, description, OG image
 - `sitemap.ts` → auto-generate sitemap
 - `robots.ts` → allow all
@@ -484,10 +484,10 @@ Build these components first (they are reused across many pages):
 ```env
 # .env.local
 RESEND_API_KEY=re_xxxx
-NEXT_PUBLIC_SITE_URL=https://liblit.com
-NEXT_PUBLIC_PHONE_SALES=(888) 786-7135
-NEXT_PUBLIC_PHONE_SUPPORT=(866) 841-7469
-NEXT_PUBLIC_EMAIL=support@liblit.com
+NEXT_PUBLIC_SITE_URL=https://usaghostwriter.com
+NEXT_PUBLIC_PHONE_SALES=(888) 111-2222
+NEXT_PUBLIC_PHONE_SUPPORT=(866) 333-4444
+NEXT_PUBLIC_EMAIL=support@usaghostwriter.com
 NEXT_PUBLIC_GTM_ID=GTM-xxxxx
 ```
 
@@ -526,16 +526,16 @@ Smashwords, Barnes & Noble, Google Books, Draft2Digital, Amazon, Kindle, Kobo, A
 ### Contact:
 - Sales: (888) 786-7135
 - Support: (866) 841-7469
-- Email: support@liblit.com
-- Canada: R-10225 Yonge St, Suite #250, Richmond Hill, ON L4C 3B2
+- Email: support@usaghostwriter.com
+- Canada: (optional)
 - USA: 211 E 43rd St, 7th Floor, Suite #424, New York City, NY 10017
 
 ### Social:
-- Facebook: facebook.com/liblitbookwriting0
-- Twitter/X: x.com/liblitbookwriting
-- Instagram: instagram.com/liblitbookwriting/
-- YouTube: youtube.com/@liblitbookwriting
-- Threads: threads.com/@liblitbookwriting
+- Facebook: facebook.com/usaghostwriter
+- Twitter/X: x.com/usaghostwriter
+- Instagram: instagram.com/usaghostwriter
+- YouTube: youtube.com/@usaghostwriter
+- Threads: (optional)
 
 ---
 

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { serviceSlugs } from "@/src/data/services";
 import { blogPosts } from "@/src/data/blog";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://liblit.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

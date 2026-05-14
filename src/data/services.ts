@@ -10,7 +10,7 @@ export type Service = {
   icon: LucideIcon;
 };
 
-// TODO: Replace with real content copied from liblit.com
+// TODO: Replace with real content copied from usaghostwriter.com
 export const services: Service[] = [
   {
     id: 1,

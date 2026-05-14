@@ -18,19 +18,23 @@ export function CTABanner({
 }: CTABannerProps) {
   return (
     <section className="px-4 py-14">
-      <div className="relative mx-auto max-w-container overflow-hidden rounded-3xl bg-gradient-to-br from-brand-green via-[#275e12] to-[#1a3d08] px-8 py-14 md:px-14">
+      <div className="relative mx-auto max-w-container overflow-hidden rounded-3xl bg-gradient-to-br from-brand-green via-[#0b3c6d] to-secondary px-8 py-14 md:px-14">
         {/* Decorative circles */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full border border-white/5 bg-white/[0.03]"
+          className="pointer-events-none absolute -right-16 -top-16 size-72 rounded-full border border-white/10 bg-white/[0.04]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-20 -left-12 size-64 rounded-full border border-white/5 bg-white/[0.03]"
+          className="pointer-events-none absolute -bottom-20 -left-12 size-64 rounded-full border border-white/10 bg-white/[0.04]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-1/3 top-1/2 size-40 -translate-y-1/2 rounded-full bg-white/[0.03]"
+          className="pointer-events-none absolute right-1/3 top-1/2 size-40 -translate-y-1/2 rounded-full bg-white/[0.04]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-10 top-10 size-24 rounded-full bg-brand-gold/30 blur-2xl"
         />
 
         <div className="relative flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
@@ -53,7 +57,7 @@ export function CTABanner({
             </Link>
             <a
               href={secondaryHref}
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
             >
               <Phone className="size-4" aria-hidden="true" />
               {secondaryLabel}

@@ -31,7 +31,7 @@ export default function PackagesPage() {
               key={item.name}
               className={`rounded-2xl border p-6 shadow-sm ${
                 item.featured
-                  ? "border-brand-green bg-brand-green text-white"
+                  ? "border-brand-green bg-brand-green text-white shadow-[0_20px_50px_-24px_rgba(11,60,109,0.6)]"
                   : "border-brand-green/10 bg-white text-brand-charcoal"
               }`}
             >
@@ -63,8 +63,8 @@ export default function PackagesPage() {
                 href={`/contact-us?package=${encodeURIComponent(item.name)}`}
                 className={`mt-6 inline-flex rounded-md px-4 py-2 text-sm font-semibold ${
                   item.featured
-                    ? "bg-white text-brand-green hover:bg-brand-cream"
-                    : "bg-brand-green text-white hover:bg-brand-green-light"
+                    ? "bg-white text-secondary hover:bg-brand-cream"
+                    : "bg-secondary text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)] hover:bg-secondary/90"
                 }`}
               >
                 Get a Quote
@@ -75,7 +75,7 @@ export default function PackagesPage() {
       </section>
 
       <section className="mx-auto max-w-container px-4 pb-12">
-        <div className="overflow-x-auto rounded-2xl border border-brand-green/10 bg-white">
+        <div className="overflow-x-auto rounded-2xl border border-brand-green/12 bg-white shadow-[0_10px_30px_-18px_rgba(11,60,109,0.3)]">
           <table className="min-w-full text-sm">
             <thead className="bg-brand-cream text-left text-brand-charcoal">
               <tr>
@@ -89,7 +89,7 @@ export default function PackagesPage() {
             </thead>
             <tbody>
               {Array.from(new Set(publishingPackages.flatMap((pkg) => pkg.featureGroups.map((g) => g.title)))).map((group) => (
-                <tr key={group} className="border-t border-brand-green/10">
+                <tr key={group} className="border-t border-brand-green/12">
                   <td className="px-4 py-3 font-medium text-brand-charcoal">{group}</td>
                   {publishingPackages.map((pkg) => {
                     const match = pkg.featureGroups.find((g) => g.title === group);

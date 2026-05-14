@@ -79,7 +79,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 3);
   const serviceFaqs = buildServiceFaqs(service.title);
   const processSteps = buildProcess(service.title);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://liblit.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -87,7 +87,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     description: service.description,
     provider: {
       "@type": "Organization",
-      name: "Liblit Books Publishing",
+      name: "USA Ghost Writer",
       url: siteUrl,
     },
     areaServed: "Global",

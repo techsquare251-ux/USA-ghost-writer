@@ -39,7 +39,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const relatedPosts = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://liblit.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -48,11 +48,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     datePublished: post.publishedAt,
     author: {
       "@type": "Organization",
-      name: "Liblit Books Publishing",
+      name: "USA Ghost Writer",
     },
     publisher: {
       "@type": "Organization",
-      name: "Liblit Books Publishing",
+      name: "USA Ghost Writer",
     },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
   };

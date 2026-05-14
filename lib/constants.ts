@@ -1,11 +1,11 @@
-export const SITE_NAME = "Liblit Books Publishing";
+export const SITE_NAME = "USA Ghost Writer";
 
 export const CONTACT = {
-  salesPhone: "(888) 786-7135",
-  supportPhone: "(866) 841-7469",
-  email: "support@liblitbookspublishing.com",
-  canadaAddress: "R-10225 Yonge St, Suite #250, Richmond Hill, ON L4C 3B2",
-  usaAddress: "211 E 43rd St, 7th Floor, Suite #424, New York City, NY 10017",
+  salesPhone: "+1 (406) 849-8235",
+  supportPhone: "+1 (406) 849-8235",
+  email: "support@usaghostwriter.com",
+  canadaAddress: "",
+  usaAddress: "811 W 7th St,90017,Los angeles,United states",
 };
 
 export type DistributionPartner = {
@@ -23,11 +23,11 @@ export const DISTRIBUTION_PARTNERS: DistributionPartner[] = [
 ];
 
 export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/liblitbookwriting0",
-  x: "https://x.com/liblitbookwriting",
-  instagram: "https://instagram.com/liblitbookwriting/",
-  youtube: "https://youtube.com/@liblitbookwriting",
-  linkedin: "https://linkedin.com/company/liblitbookwriting",
+  facebook: "https://www.facebook.com/share/18KkX2FqVw/?mibextid=wwXIfr",
+  x: "",
+  instagram: "https://www.instagram.com/usa.ghostwriter?igsh=MWU4dWducjYwemo2eA==",
+  youtube: "",
+  linkedin: "",
 };
 
 export type SocialMediaLogo = {

@@ -24,14 +24,14 @@ export default function Home() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Liblit Books Publishing",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://liblit.com",
+    name: "USA Ghost Writer",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        telephone: "+1-866-841-7469",
-        email: "support@liblitbookspublishing.com",
+        telephone: "+1-866-333-4444",
+        email: "support@usaghostwriter.com",
       },
     ],
   };

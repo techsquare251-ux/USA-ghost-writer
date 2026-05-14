@@ -3,7 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
-  description: "Review the terms governing use of Liblit Books Publishing services and website content.",
+  description: "Review the terms governing use of USA Ghost Writer services and website content.",
 };
 
 const sections = [

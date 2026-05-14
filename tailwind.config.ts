@@ -34,6 +34,8 @@ const config: Config = {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
         },
+        bg: "#F8F9FC",
+        ink: "#1B263B",
         popover: {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
@@ -44,19 +46,22 @@ const config: Config = {
         },
         brand: {
           green: {
-            DEFAULT: "#2D5016",
-            light: "#3D6B20",
-            muted: "#E8F0E0",
+            DEFAULT: "#0B3C6D",
+            light: "#1E5288",
+            muted: "#E6EBF4",
           },
-          gold: "#C9A84C",
-          cream: "#FAF7F2",
-          charcoal: "#1A1A1A",
-          muted: "#6B7280",
+          gold: "#D4A017",
+          cream: "#F8F9FC",
+          charcoal: "#1B263B",
+          muted: "#536079",
         },
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        body: ["var(--font-body)", "Georgia", "serif"],
       },
       maxWidth: {
         container: "80rem",

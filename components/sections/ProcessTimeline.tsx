@@ -16,18 +16,18 @@ export function ProcessTimeline() {
           {publishingProcess.map((step) => (
             <article
               key={step.step}
-              className="group relative overflow-hidden rounded-2xl border border-brand-green/8 bg-gradient-to-br from-brand-cream to-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/20 hover:shadow-[0_16px_40px_-12px_rgba(20,32,24,0.14)]"
+              className="group relative overflow-hidden rounded-2xl border border-brand-green/10 bg-gradient-to-br from-brand-cream to-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-secondary/30 hover:shadow-[0_18px_44px_-18px_rgba(11,60,109,0.35)]"
             >
               {/* Large decorative step number */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-3 -top-5 font-serif text-[7rem] font-bold leading-none text-brand-green/5 select-none transition-colors duration-300 group-hover:text-brand-green/8"
+                className="pointer-events-none absolute -right-3 -top-5 font-serif text-[7rem] font-bold leading-none text-brand-green/5 select-none transition-colors duration-300 group-hover:text-brand-green/10"
               >
                 {step.step}
               </div>
 
               {/* Step badge */}
-              <div className="relative inline-flex size-11 items-center justify-center rounded-full bg-brand-green text-sm font-semibold text-white shadow-[0_4px_12px_rgba(45,80,22,0.35)]">
+              <div className="relative inline-flex size-11 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-white shadow-[0_10px_20px_-12px_rgba(193,18,31,0.7)]">
                 {step.step}
               </div>
 

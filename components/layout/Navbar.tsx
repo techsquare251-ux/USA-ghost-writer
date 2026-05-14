@@ -53,32 +53,34 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-brand-green/8 bg-white/96 shadow-[0_1px_20px_rgba(0,0,0,0.06)] backdrop-blur-md"
-          : "border-b border-transparent bg-brand-cream"
+          ? "border-b border-brand-green/15 bg-white/95 shadow-[0_10px_30px_-18px_rgba(11,60,109,0.45)] backdrop-blur-md"
+          : "border-b border-transparent bg-gradient-to-b from-white/90 via-brand-cream/80 to-brand-cream"
       )}
     >
       {/* Top bar */}
-      <div className="hidden border-b border-brand-green/8 bg-brand-green/[0.02] md:block">
+      <div className="hidden border-b border-brand-green/10 bg-brand-green/[0.03] md:block">
         <div className="mx-auto flex max-w-container items-center justify-between px-4 py-2 text-xs text-brand-muted">
-          <p className="font-medium">Premium publishing support for ambitious authors.</p>
+          <p className="font-medium text-brand-charcoal/80">
+            Premium publishing support for ambitious authors.
+          </p>
           <div className="flex items-center gap-5">
             <a
               href={`tel:${CONTACT.salesPhone}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-green"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-secondary"
             >
               <Phone className="size-3.5" aria-hidden="true" />
               {CONTACT.salesPhone}
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-brand-green"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-secondary"
             >
               <Mail className="size-3.5" aria-hidden="true" />
               {CONTACT.email}
             </a>
             <span className="inline-flex items-center gap-1.5">
               <MapPin className="size-3.5" aria-hidden="true" />
-              New York, USA
+              {CONTACT.usaAddress}
             </span>
           </div>
         </div>
@@ -99,7 +101,7 @@ export function Navbar() {
               <Link
                 href={link.href}
                 className={cn(
-                  "relative inline-flex items-center gap-1 py-1 text-sm font-medium transition-colors hover:text-brand-green",
+                  "relative inline-flex items-center gap-1 py-1 text-sm font-medium transition-colors hover:text-secondary",
                   isActive(link.href) ? "text-brand-green" : "text-brand-charcoal"
                 )}
               >
@@ -110,14 +112,14 @@ export function Navbar() {
                 {/* Active underline */}
                 <span
                   className={cn(
-                    "absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-brand-green transition-all duration-300",
+                    "absolute -bottom-0.5 left-0 h-0.5 rounded-full bg-secondary transition-all duration-300",
                     isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                   )}
                 />
               </Link>
 
               {link.href === "/services" ? (
-                <div className="invisible absolute left-1/2 top-full z-40 mt-4 w-[38rem] -translate-x-1/2 rounded-2xl border border-brand-green/10 bg-white/98 p-5 opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-1/2 top-full z-40 mt-4 w-[38rem] -translate-x-1/2 rounded-2xl border border-brand-green/10 bg-white/98 p-5 opacity-0 shadow-[0_30px_80px_-40px_rgba(11,60,109,0.6)] backdrop-blur-sm transition-all duration-200 group-hover:visible group-hover:opacity-100">
                   <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-muted">
                     Our Services
                   </p>
@@ -126,7 +128,7 @@ export function Navbar() {
                       <Link
                         key={service.slug}
                         href={`/services/${service.slug}`}
-                        className="rounded-lg px-3 py-2 text-sm text-brand-charcoal transition-colors hover:bg-brand-green/5 hover:text-brand-green"
+                        className="rounded-lg px-3 py-2 text-sm text-brand-charcoal transition-colors hover:bg-brand-green/5 hover:text-secondary"
                       >
                         {service.title}
                       </Link>
@@ -135,7 +137,7 @@ export function Navbar() {
                   <div className="mt-4 border-t border-brand-green/8 pt-4">
                     <Link
                       href="/services"
-                      className="text-xs font-semibold text-brand-green hover:text-brand-green-light"
+                      className="text-xs font-semibold text-brand-green hover:text-secondary"
                     >
                       View all services →
                     </Link>
@@ -149,7 +151,7 @@ export function Navbar() {
         <div className="hidden lg:block">
           <Link
             href="/contact-us"
-            className="inline-flex h-10 items-center rounded-full bg-brand-green px-6 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-brand-green-light hover:shadow-md"
+            className="inline-flex h-10 items-center rounded-full bg-secondary px-6 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(193,18,31,0.6)] transition-all duration-200 hover:bg-secondary/90 hover:shadow-[0_16px_30px_-14px_rgba(193,18,31,0.7)]"
           >
             Talk to Expert
           </Link>
@@ -178,7 +180,7 @@ export function Navbar() {
                         key={link.href}
                         href={link.href}
                         className={cn(
-                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-green/5 hover:text-brand-green",
+                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-brand-green/5 hover:text-secondary",
                           isActive(link.href)
                             ? "bg-brand-green/5 text-brand-green"
                             : "text-brand-charcoal"
@@ -200,7 +202,7 @@ export function Navbar() {
                           <Link
                             key={service.slug}
                             href={`/services/${service.slug}`}
-                            className="rounded-lg px-3 py-1.5 text-sm text-brand-muted transition-colors hover:bg-brand-green/5 hover:text-brand-green"
+                            className="rounded-lg px-3 py-1.5 text-sm text-brand-muted transition-colors hover:bg-brand-green/5 hover:text-secondary"
                           >
                             {service.title}
                           </Link>
@@ -212,7 +214,7 @@ export function Navbar() {
 
                 <Link
                   href="/contact-us"
-                  className="mt-6 flex h-11 w-full items-center justify-center rounded-full bg-brand-green text-sm font-semibold text-white transition hover:bg-brand-green-light"
+                  className="mt-6 flex h-11 w-full items-center justify-center rounded-full bg-secondary text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(193,18,31,0.6)] transition hover:bg-secondary/90"
                 >
                   Talk to Expert
                 </Link>

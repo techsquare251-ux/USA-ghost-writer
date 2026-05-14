@@ -20,8 +20,8 @@ export async function POST(request: Request) {
     if (apiKey) {
       const resend = new Resend(apiKey);
       await resend.emails.send({
-        from: "Liblit Books Publishing <onboarding@resend.dev>",
-        to: [process.env.NEXT_PUBLIC_EMAIL ?? "support@liblitbookspublishing.com"],
+        from: "USA Ghost Writer <onboarding@resend.dev>",
+        to: [process.env.NEXT_PUBLIC_EMAIL ?? "support@usaghostwriter.com"],
         subject: `New Quote Request (${data.context ?? "general"})`,
         text: [
           `Name: ${data.name}`,

@@ -8,7 +8,7 @@ import { CONTACT, SOCIAL_MEDIA_LOGOS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Liblit Books Publishing for publishing, editing, and marketing support.",
+  description: "Get in touch with USA Ghost Writer for publishing, editing, and marketing support.",
 };
 
 const contactDetails = [
@@ -58,7 +58,7 @@ export default function ContactPage() {
 
             <div className="mt-10 overflow-hidden rounded-3xl shadow-[0_20px_50px_-16px_rgba(20,32,24,0.16)]">
               <Image
-                src="https://picsum.photos/seed/contact-liblit/900/600"
+                src="https://picsum.photos/seed/contact-usa-ghost-writer/900/600"
                 alt="Publishing consultant ready to assist authors"
                 width={900}
                 height={600}

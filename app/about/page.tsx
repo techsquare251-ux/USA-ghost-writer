@@ -7,7 +7,7 @@ import { ContactFormSection } from "@/components/sections/ContactFormSection";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about Liblit Books Publishing, our story, values, and publishing support approach.",
+  description: "Learn about USA Ghost Writer, our story, values, and publishing support approach.",
 };
 
 const stats = [
@@ -20,7 +20,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero title="About Liblit Books Publishing" current="About" />
+      <PageHero title="About USA Ghost Writer" current="About" />
 
       <section className="mx-auto grid max-w-container gap-8 px-4 py-20 lg:grid-cols-2 lg:items-center">
         <div>

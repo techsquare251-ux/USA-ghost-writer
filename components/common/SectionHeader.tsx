@@ -22,7 +22,7 @@ export function SectionHeader({
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-green/80">
             {eyebrow}
           </p>
-          <div className="mt-2 h-0.5 w-10 rounded-full bg-brand-gold/60" />
+          <div className="mt-2 h-0.5 w-10 rounded-full bg-secondary" />
         </div>
       ) : null}
       <h2 className="mt-4 text-3xl font-semibold tracking-tight text-brand-charcoal sm:text-4xl">

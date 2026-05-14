@@ -3,7 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Learn how Liblit collects, uses, and protects your data.",
+  description: "Learn how USA Ghost Writer collects, uses, and protects your data.",
 };
 
 const sections = [
@@ -30,7 +30,7 @@ const sections = [
   {
     id: "contact",
     title: "Contact",
-    body: "For privacy questions or data requests, contact support@liblitbookspublishing.com.",
+    body: "For privacy questions or data requests, contact support@usaghostwriter.com.",
   },
 ];
 

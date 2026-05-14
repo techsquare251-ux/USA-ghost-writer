@@ -4,7 +4,7 @@ import { awards } from "@/src/data/awards";
 
 export function AwardsSection() {
   return (
-    <section className="bg-gradient-to-b from-white to-brand-cream/50 py-24">
+    <section className="bg-gradient-to-b from-white to-brand-cream/70 py-24">
       <div className="mx-auto max-w-container px-4">
         <SectionHeader
           centered
@@ -17,7 +17,7 @@ export function AwardsSection() {
           {awards.map((award) => (
             <article
               key={award.id}
-              className="group overflow-hidden rounded-2xl border border-brand-green/8 bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-green/20 hover:shadow-[0_16px_40px_-12px_rgba(20,32,24,0.12)]"
+              className="group overflow-hidden rounded-2xl border border-brand-green/10 bg-white shadow-[0_10px_30px_-18px_rgba(11,60,109,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/30 hover:shadow-[0_16px_40px_-16px_rgba(11,60,109,0.45)]"
             >
               <div className="relative h-44 overflow-hidden bg-brand-cream">
                 <Image
@@ -28,7 +28,7 @@ export function AwardsSection() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-white/30 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"
                 />
               </div>
               <div className="p-5">

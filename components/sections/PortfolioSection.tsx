@@ -45,7 +45,7 @@ export function PortfolioSection() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-white via-brand-cream/60 to-white py-24">
+    <section className="bg-gradient-to-b from-white via-brand-cream/70 to-white py-24">
       <div className="mx-auto max-w-container px-4">
         <SectionHeader
           centered
@@ -56,7 +56,7 @@ export function PortfolioSection() {
 
         {/* Tab bar */}
         <div className="mt-8 flex justify-center">
-          <div className="inline-flex rounded-full border border-brand-green/12 bg-white p-1 shadow-sm">
+          <div className="inline-flex rounded-full border border-brand-green/15 bg-white p-1 shadow-sm">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -65,8 +65,8 @@ export function PortfolioSection() {
                 className={cn(
                   "rounded-full px-5 py-2 text-sm font-medium transition-all duration-200",
                   active === tab
-                    ? "bg-brand-green text-white shadow-sm"
-                    : "text-brand-muted hover:text-brand-charcoal"
+                    ? "bg-secondary text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)]"
+                    : "text-brand-muted hover:text-secondary"
                 )}
               >
                 {tab}
@@ -81,7 +81,7 @@ export function PortfolioSection() {
             type="button"
             aria-label="Scroll books left"
             onClick={() => scrollByCardSet("left")}
-            className="absolute -left-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/15 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-brand-green/35 hover:text-brand-green md:flex"
+            className="absolute -left-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/20 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-secondary/40 hover:text-secondary md:flex"
           >
             <ChevronLeft className="size-4" aria-hidden="true" />
           </button>
@@ -97,7 +97,7 @@ export function PortfolioSection() {
                 className="group relative w-[80%] shrink-0 cursor-pointer snap-start sm:w-[46%] md:w-[36%] lg:w-[28%] xl:w-[22%]"
               >
                 {/* Cover */}
-                <div className="relative overflow-hidden rounded-2xl shadow-[0_14px_36px_-20px_rgba(20,32,24,0.40)] transition-all duration-400 group-hover:-translate-y-1.5 group-hover:shadow-[0_24px_48px_-20px_rgba(20,32,24,0.50)]">
+                <div className="relative overflow-hidden rounded-2xl shadow-[0_18px_44px_-24px_rgba(11,60,109,0.45)] transition-all duration-400 group-hover:-translate-y-1.5 group-hover:shadow-[0_28px_60px_-26px_rgba(11,60,109,0.6)]">
                   <div className="aspect-[2/3]">
                     <Image
                       src={book.coverImage}
@@ -107,7 +107,7 @@ export function PortfolioSection() {
                     />
                   </div>
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/75 via-black/10 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/10 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <p className="text-[10px] font-semibold uppercase tracking-widest text-white/70">
                       {book.genre}
                     </p>
@@ -136,7 +136,7 @@ export function PortfolioSection() {
             type="button"
             aria-label="Scroll books right"
             onClick={() => scrollByCardSet("right")}
-            className="absolute -right-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/15 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-brand-green/35 hover:text-brand-green md:flex"
+            className="absolute -right-4 top-[45%] z-10 hidden -translate-y-1/2 rounded-full border border-brand-green/20 bg-white p-2.5 text-brand-charcoal shadow-md transition hover:border-secondary/40 hover:text-secondary md:flex"
           >
             <ChevronRight className="size-4" aria-hidden="true" />
           </button>
@@ -146,7 +146,7 @@ export function PortfolioSection() {
         <div className="mt-4 flex justify-center">
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-green transition hover:text-brand-green-light"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-green transition hover:text-secondary"
           >
             View full portfolio
             <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -171,7 +171,7 @@ export function PortfolioSection() {
               type="button"
               onClick={() => setSelectedBook(null)}
               aria-label="Close book details"
-              className="absolute right-5 top-5 z-10 rounded-full border border-brand-green/15 bg-white p-2 text-brand-charcoal shadow-sm transition hover:border-brand-green/35 hover:text-brand-green"
+              className="absolute right-5 top-5 z-10 rounded-full border border-brand-green/15 bg-white p-2 text-brand-charcoal shadow-sm transition hover:border-secondary/40 hover:text-secondary"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
@@ -200,7 +200,7 @@ export function PortfolioSection() {
                   <p className="mt-1 text-sm text-brand-muted">by {selectedBook.author}</p>
                 </div>
 
-                <div className="h-px bg-brand-green/8" />
+                <div className="h-px bg-brand-green/12" />
 
                 <p className="flex-1 text-sm leading-relaxed text-brand-muted">
                   {selectedBook.description ??
@@ -212,7 +212,7 @@ export function PortfolioSection() {
                     href={selectedBook.amazonUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-green-light"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)] transition hover:bg-secondary/90"
                   >
                     Buy on Amazon
                     <ArrowUpRight className="size-3.5" aria-hidden="true" />
@@ -220,7 +220,7 @@ export function PortfolioSection() {
                   <button
                     type="button"
                     onClick={() => setSelectedBook(null)}
-                    className="rounded-full border border-brand-green/20 px-5 py-2.5 text-sm font-semibold text-brand-charcoal transition hover:border-brand-green/40 hover:text-brand-green"
+                    className="rounded-full border border-brand-green/20 px-5 py-2.5 text-sm font-semibold text-brand-charcoal transition hover:border-secondary/40 hover:text-secondary"
                   >
                     Close
                   </button>

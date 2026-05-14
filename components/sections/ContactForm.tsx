@@ -133,7 +133,7 @@ export function ContactForm({
         <Button
           onClick={handleSubmit(onSubmitWithEndpoint)}
           disabled={isSubmitting}
-          className="mt-1 h-11 rounded-md bg-brand-green text-white hover:bg-brand-green-light"
+          className="mt-1 h-11 rounded-md bg-secondary text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)] transition hover:bg-secondary/90 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? <Loader2 className="size-4 animate-spin" aria-hidden="true" /> : null}
           {isSubmitting ? "Submitting..." : submitLabel}

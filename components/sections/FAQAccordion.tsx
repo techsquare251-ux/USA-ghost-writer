@@ -23,15 +23,15 @@ export function FAQAccordion({
         <SectionHeader centered title={title} subtitle={subtitle} />
 
         <div className="mx-auto mt-12 max-w-3xl">
-          <div className="overflow-hidden rounded-2xl border border-brand-green/8 bg-white shadow-[0_8px_40px_-12px_rgba(20,32,24,0.10)]">
+          <div className="overflow-hidden rounded-2xl border border-brand-green/10 bg-white shadow-[0_12px_40px_-18px_rgba(11,60,109,0.35)]">
             <Accordion defaultValue={items[0] ? [items[0].q] : []}>
               {items.map((item, i) => (
                 <AccordionItem
                   key={item.q}
                   value={item.q}
-                  className={i < items.length - 1 ? "border-b border-brand-green/6" : "border-b-0"}
+                  className={i < items.length - 1 ? "border-b border-brand-green/10" : "border-b-0"}
                 >
-                  <AccordionTrigger className="px-6 py-5 text-left text-base font-medium text-brand-charcoal hover:text-brand-green hover:no-underline [&[data-state=open]]:text-brand-green">
+                  <AccordionTrigger className="px-6 py-5 text-left text-base font-medium text-brand-charcoal hover:text-secondary hover:no-underline [&[data-state=open]]:text-secondary">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="px-6 pb-5 text-sm leading-7 text-brand-muted">
