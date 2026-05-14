@@ -2,38 +2,50 @@ export type ProcessStep = {
   step: number;
   title: string;
   description: string;
+  icon: string;
 };
 
-// TODO: Replace with the exact 6-step process content.
 export const publishingProcess: ProcessStep[] = [
   {
     step: 1,
-    title: "Discovery",
-    description: "Understand manuscript goals, audience, and publishing path.",
+    title: "Editing",
+    description:
+      "Elevate your manuscript with our editing service that ensures every word tells your story the way you intended.",
+    icon: "Pencil",
   },
   {
     step: 2,
-    title: "Editorial",
-    description: "Refine structure and language to improve readability and impact.",
+    title: "Formatting",
+    description:
+      "From font choice to margins, our formatting service makes sure your book is dressed to impress.",
+    icon: "AlignLeft",
   },
   {
     step: 3,
-    title: "Design",
-    description: "Prepare a polished cover and interior layout for release.",
+    title: "Proofreading",
+    description:
+      "Our proofreading team is your safety net, catching every slip-up to make your writing flawless.",
+    icon: "SearchCheck",
   },
   {
     step: 4,
-    title: "Production",
-    description: "Generate distribution-ready files for print and digital formats.",
+    title: "Typesetting & Layout",
+    description:
+      "Expert typesetting that makes your book as easy on the eyes as it is engaging for the mind.",
+    icon: "LayoutTemplate",
   },
   {
     step: 5,
-    title: "Distribution",
-    description: "Publish to selected marketplaces with optimized metadata.",
+    title: "Cover Design",
+    description:
+      "We create covers that speak to readers, inviting them into the world you've created.",
+    icon: "ImageIcon",
   },
   {
     step: 6,
-    title: "Launch",
-    description: "Execute rollout and monitor post-launch performance.",
+    title: "Publishing",
+    description:
+      "Your literary journey culminates with our publishing service, placing your book in the spotlight it deserves.",
+    icon: "Send",
   },
 ];

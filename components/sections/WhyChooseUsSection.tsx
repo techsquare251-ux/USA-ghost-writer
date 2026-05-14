@@ -1,73 +1,128 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, Phone } from "lucide-react";
-import { SectionHeader } from "@/components/common/SectionHeader";
+import { motion } from "framer-motion";
+import { Check, MessageSquare, Phone } from "lucide-react";
+import { CONTACT } from "@/lib/constants";
 
-const benefits = [
+const BENEFITS = [
   "Affordable Price",
-  "Tailored Creativity",
-  "Expert Craftsmanship",
   "Engaging Narratives",
+  "Tailored Creativity",
   "On-Time Deliveries",
+  "Expert Craftsmanship",
   "Pristine Publication",
 ];
 
+const EASE = "easeOut" as const;
+const VIEW = { once: true, amount: 0.15 as const };
+
 export function WhyChooseUsSection() {
   return (
-    <section className="bg-gradient-to-b from-white via-brand-cream/60 to-white py-24">
-      <div className="mx-auto grid max-w-container gap-12 px-4 lg:grid-cols-2 lg:items-center">
-        {/* Image */}
-        <div className="relative overflow-hidden rounded-3xl shadow-[0_24px_60px_-20px_rgba(11,60,109,0.35)]">
-          <Image
-            src="https://picsum.photos/seed/why-usa-ghost-writer/900/1100"
-            alt="Author and consultant collaborating on final manuscript"
-            width={900}
-            height={1100}
-            className="h-full w-full object-cover"
-          />
+    <section className="relative overflow-hidden bg-[#1a7a6a]">
+      <div className="mx-auto flex max-w-[1400px] flex-col lg:flex-row lg:min-h-[500px]">
+
+        {/* ── LEFT: image panel ─────────────────────────────── */}
+        <div className="relative min-h-[360px] w-full flex-shrink-0 lg:w-[45%] lg:min-h-0">
+          {/* large lighter-teal glow circle behind persons */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
-          />
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
+            <div className="h-[85%] w-[85%] rounded-full bg-[#2aab96]/35 blur-3xl" />
+          </div>
+
+          <motion.div
+            className="relative h-full w-full"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <Image
+              src="/why-choose-us.jpeg"
+              alt="Our team of publishing consultants"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+            {/* bottom fade into section bg */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1a7a6a] to-transparent" />
+            {/* right fade into section bg */}
+            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#1a7a6a] to-transparent" />
+          </motion.div>
         </div>
 
-        <div>
-          <SectionHeader
-            eyebrow="Why Choose Us"
-            title="Built Around Quality, Clarity, and Reliable Delivery"
-            subtitle="Our team blends editorial expertise with production discipline to deliver books that read better, look better, and launch stronger."
-          />
+        {/* ── RIGHT: content ────────────────────────────────── */}
+        <div className="flex flex-1 flex-col justify-center px-8 py-14 sm:px-12 lg:px-14 xl:px-16">
 
-          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-            {benefits.map((item) => (
-              <li
-                key={item}
-                className="flex items-center gap-3 rounded-xl border border-brand-green/12 bg-white px-4 py-3 text-sm font-medium text-brand-charcoal shadow-[0_1px_4px_rgba(11,60,109,0.08)] transition hover:border-secondary/35 hover:shadow-[0_6px_18px_-10px_rgba(11,60,109,0.3)]"
-              >
-                <CheckCircle2
-                  className="size-4 shrink-0 text-secondary"
-                  aria-hidden="true"
-                />
-                {item}
+          {/* heading */}
+          <motion.h2
+            className="mb-4 text-[clamp(28px,4vw,46px)] font-black uppercase leading-tight tracking-tight text-white"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
+          >
+            Why Choose Us?
+          </motion.h2>
+
+          {/* body */}
+          <motion.p
+            className="mb-8 max-w-md text-[14px] leading-7 text-white/65"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.55, ease: EASE, delay: 0.18 }}
+          >
+            Tired of trying out the same old book publishing companies? At USA
+            Ghost Writer, your success is our priority, and we&apos;re committed
+            to helping you achieve your literary goals with the most professional
+            services. With us, you get:
+          </motion.p>
+
+          {/* benefits grid */}
+          <motion.ul
+            className="mb-10 grid grid-cols-2 gap-x-6 gap-y-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.55, ease: EASE, delay: 0.26 }}
+          >
+            {BENEFITS.map((item) => (
+              <li key={item} className="flex items-center gap-2.5">
+                <span className="flex size-4 shrink-0 items-center justify-center">
+                  <Check className="size-4 text-white" strokeWidth={3} aria-hidden="true" />
+                </span>
+                <span className="text-[13px] font-medium text-white/80">{item}</span>
               </li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          {/* CTA buttons */}
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEW}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.34 }}
+          >
             <Link
               href="/contact-us"
-              className="inline-flex h-11 items-center rounded-full bg-secondary px-6 text-sm font-semibold text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)] transition hover:bg-secondary/90 hover:shadow-[0_16px_30px_-16px_rgba(193,18,31,0.7)]"
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 text-[13px] font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/60 active:scale-[0.98]"
             >
-              Talk to an Expert
+              <MessageSquare className="size-4" aria-hidden="true" />
+              Speak to our Consultant
             </Link>
             <a
-              href="tel:(888)111-2222"
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-green/25 px-6 text-sm font-semibold text-brand-green transition hover:border-secondary/45 hover:text-secondary"
+              href={`tel:${CONTACT.salesPhone}`}
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 text-[13px] font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/60 active:scale-[0.98]"
             >
               <Phone className="size-4" aria-hidden="true" />
               Call Now
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
