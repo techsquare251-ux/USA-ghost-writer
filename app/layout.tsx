@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, DM_Mono, Cormorant_Garamond } from "next/font/
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,6 +73,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <Chatbot />
         </div>
       </body>
     </html>
