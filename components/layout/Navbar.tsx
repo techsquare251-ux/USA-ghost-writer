@@ -8,6 +8,7 @@ import { services } from "@/src/data/services";
 import { CONTACT, SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { BookingModal } from "@/components/common/BookingModal";
 import {
   Sheet,
   SheetContent,
@@ -35,12 +36,30 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+
+  const handleBookingClose = () => {
+    setBookingOpen(false);
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("bookingPromptSeen", "true");
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.sessionStorage.getItem("bookingPromptSeen")) return;
+    const timer = window.setTimeout(() => {
+      setBookingOpen(true);
+      window.sessionStorage.setItem("bookingPromptSeen", "true");
+    }, 10000);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const isActive = (href: string) => {
@@ -149,12 +168,13 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            href="/contact-us"
+          <button
+            type="button"
+            onClick={() => setBookingOpen(true)}
             className="inline-flex h-10 items-center rounded-full bg-secondary px-6 text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(193,18,31,0.6)] transition-all duration-200 hover:bg-secondary/90 hover:shadow-[0_16px_30px_-14px_rgba(193,18,31,0.7)]"
           >
-            Talk to Expert
-          </Link>
+            Book a Call
+          </button>
         </div>
 
         <div className="lg:hidden">
@@ -212,17 +232,19 @@ export function Navbar() {
                   </AccordionItem>
                 </Accordion>
 
-                <Link
-                  href="/contact-us"
+                <button
+                  type="button"
+                  onClick={() => setBookingOpen(true)}
                   className="mt-6 flex h-11 w-full items-center justify-center rounded-full bg-secondary text-sm font-semibold text-white shadow-[0_10px_24px_-12px_rgba(193,18,31,0.6)] transition hover:bg-secondary/90"
                 >
-                  Talk to Expert
-                </Link>
+                  Book a Call
+                </button>
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
+      <BookingModal open={bookingOpen} onClose={handleBookingClose} />
     </header>
   );
 }
