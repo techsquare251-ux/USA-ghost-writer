@@ -8,21 +8,24 @@ import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import { Toast } from "@/components/common/Toast";
 
 type ContactFormProps = {
   context: string;
   compact?: boolean;
-  endpoint?: "/api/quote" | "/api/contact";
+  endpoint?: string;
   submitLabel?: string;
 };
 
 export function ContactForm({
   context,
   compact = false,
-  endpoint = "/api/quote",
+  endpoint = "/api/contact",
   submitLabel = "Submit",
 }: ContactFormProps) {
   const [serverMessage, setServerMessage] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
   const {
     control,
     register,
@@ -44,26 +47,45 @@ export function ContactForm({
 
   const onSubmitWithEndpoint = async (values: ContactFormValues) => {
     setServerMessage("");
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...values, context }),
-    });
+    setIsSuccess(false);
+    const resolvedEndpoint = endpoint.startsWith("http")
+      ? endpoint
+      : `${apiBaseUrl}${endpoint}`;
 
-    const result = (await response.json()) as { success: boolean; message: string };
-    setServerMessage(result.message);
-
-    if (result.success) {
-      reset({
-        name: "",
-        phone: "",
-        email: "",
-        service: "",
-        message: "",
-        smsConsent: false,
-        context,
+    try {
+      const response = await fetch(resolvedEndpoint || endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          context,
+          sms_consent: values.smsConsent,
+        }),
       });
+
+      const result = (await response.json()) as { success: boolean; message: string };
+      setServerMessage(result.message || "Thanks! Your request was received.");
+      setIsSuccess(Boolean(result.success));
+
+      if (result.success) {
+        reset({
+          name: "",
+          phone: "",
+          email: "",
+          service: "",
+          message: "",
+          smsConsent: false,
+          context,
+        });
+      }
+    } catch {
+      setServerMessage("Something went wrong. Please try again.");
+      setIsSuccess(false);
     }
+  };
+
+  const handleToastClose = () => {
+    setServerMessage("");
   };
 
   return (
@@ -139,7 +161,11 @@ export function ContactForm({
           {isSubmitting ? "Submitting..." : submitLabel}
         </Button>
 
-        {serverMessage ? <p className="text-sm text-brand-muted">{serverMessage}</p> : null}
+        <Toast
+          message={serverMessage}
+          variant={isSuccess ? "success" : "error"}
+          onClose={handleToastClose}
+        />
       </div>
     </div>
   );

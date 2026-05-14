@@ -8,6 +8,7 @@ import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
+import { Toast } from "@/components/common/Toast";
 
 type StickyProps = {
   label: string;
@@ -41,6 +42,8 @@ function StickyNote({ label, text, bg, textColor, rotate, delay }: StickyProps) 
 
 export function HeroSection() {
   const [serverMessage, setServerMessage] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
   const {
     control,
     register,
@@ -62,26 +65,45 @@ export function HeroSection() {
 
   const onSubmitWithEndpoint = async (values: ContactFormValues) => {
     setServerMessage("");
-    const response = await fetch("/api/quote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...values, context: "hero" }),
-    });
+    setIsSuccess(false);
+    const resolvedEndpoint = apiBaseUrl
+      ? `${apiBaseUrl}/api/contact`
+      : "/api/contact";
 
-    const result = (await response.json()) as { success: boolean; message: string };
-    setServerMessage(result.message);
-
-    if (result.success) {
-      reset({
-        name: "",
-        phone: "",
-        email: "",
-        service: "",
-        message: "",
-        smsConsent: false,
-        context: "hero",
+    try {
+      const response = await fetch(resolvedEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          context: "hero",
+          sms_consent: values.smsConsent,
+        }),
       });
+
+      const result = (await response.json()) as { success: boolean; message: string };
+      setServerMessage(result.message || "Thanks! Your request was received.");
+      setIsSuccess(Boolean(result.success));
+
+      if (result.success) {
+        reset({
+          name: "",
+          phone: "",
+          email: "",
+          service: "",
+          message: "",
+          smsConsent: false,
+          context: "hero",
+        });
+      }
+    } catch {
+      setServerMessage("Something went wrong. Please try again.");
+      setIsSuccess(false);
     }
+  };
+
+  const handleToastClose = () => {
+    setServerMessage("");
   };
 
   const stickies: StickyProps[] = [
@@ -310,7 +332,11 @@ export function HeroSection() {
             </span>
           </Button>
 
-          {serverMessage ? <p className="mt-4 text-sm text-white/55">{serverMessage}</p> : null}
+          <Toast
+            message={serverMessage}
+            variant={isSuccess ? "success" : "error"}
+            onClose={handleToastClose}
+          />
 
           <p className="mt-5 text-center font-mono text-[9px] uppercase tracking-[0.1em] text-white/25">
             or call us at{" "}
