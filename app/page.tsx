@@ -80,9 +80,9 @@ export default function Home() {
       <MotionReveal delay={0.22}>
         <ContactFormSection />
       </MotionReveal>
-      <MotionReveal delay={0.24}>
+      {/* <MotionReveal delay={0.24}>
         <AwardsSection />
-      </MotionReveal>
+      </MotionReveal> */}
     </>
   );
 }

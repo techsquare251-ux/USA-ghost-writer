@@ -75,7 +75,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section className="relative min-h-[92vh] overflow-hidden">
+      <section className="relative min-h-[80vh] sm:min-h-[92vh] overflow-hidden">
         {/* ── Background image ── */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
@@ -83,7 +83,7 @@ export function HeroSection() {
             alt=""
             fill
             priority
-            className="object-cover object-left-top"
+            className="object-cover object-left-top sm:object-center lg:object-left-top"
             sizes="100vw"
           />
           {/* Dark overlay — keeps text crisp */}
@@ -93,47 +93,46 @@ export function HeroSection() {
         </div>
 
         {/* ── Main content ── */}
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:flex lg:min-h-[92vh] lg:items-center lg:gap-14 lg:px-10 lg:py-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:flex lg:min-h-[92vh] lg:items-center lg:gap-14 lg:px-10 lg:py-20">
 
           {/* Left column */}
-          <div className="flex-1 lg:max-w-[55%]">
+          <div className="flex-1 w-full lg:max-w-[55%]">
             {/* Badge */}
             <div className="mb-6 inline-flex animate-fadeUp items-center gap-2 rounded-sm bg-secondary px-4 py-1.5" style={{ animationDelay: "0.05s" }}>
               <ShieldCheck className="size-4 text-white" aria-hidden="true" />
               <span className="text-xs font-bold uppercase tracking-widest text-white">
-                #1 Self Publishing Company
+                #1 Ghost Writing Company
               </span>
             </div>
 
             <h1
-              className="animate-fadeUp mb-5 text-[clamp(30px,4.5vw,58px)] font-black uppercase leading-[1.06] tracking-tight text-white"
+              className="animate-fadeUp mb-5 text-[clamp(30px,6.2vw,72px)] font-black uppercase leading-[0.98] tracking-tight text-white whitespace-normal"
               style={{ animationDelay: "0.15s" }}
             >
-              Do You Have a Manuscript
+              TURN YOUR STORY INTO A
               <br className="hidden sm:block" />
-              <span className="text-secondary"> Ready to Be Published?</span>
+              <span className="block text-secondary">PROFESSIONALLY</span>
+              <span className="block">WRITTEN BOOK</span>
             </h1>
 
             <p
-              className="animate-fadeUp mb-8 max-w-xl text-[15px] leading-7 text-white/65"
+              className="animate-fadeUp mb-6 max-w-2xl text-[15px] sm:text-[15px] leading-7 text-white/85"
               style={{ animationDelay: "0.28s" }}
             >
-              USA Ghost Writer has made it much easier to self‑publish a book,
-              with hands‑on support from the first word to the final cover. Our
-              process involves Ghostwriting, Editing, Formatting, Book Cover
-              Design, Publishing and Print‑on‑Demand through a vast network of
-              global outlets.
+              Our professional ghostwriters turn your thoughts, experiences, and concepts into powerful books that reflect your voice. From planning and writing to editing and publishing, we handle the complete process with confidentiality and creativity.
             </p>
+
+            <hr className="animate-fadeUp mb-8 h-0.5 w-40 border-none bg-white/20" style={{ animationDelay: "0.32s" }} />
 
             {/* Stats row */}
             <div
-              className="animate-fadeUp mb-9 flex flex-wrap gap-8 border-y border-white/10 py-5"
+              className="animate-fadeUp mb-9 flex flex-wrap gap-6 border-y border-white/10 py-5"
               style={{ animationDelay: "0.38s" }}
             >
               {STATS.map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-3xl font-black text-white">{stat.num}</div>
-                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest text-white/45">
+                <div key={stat.label} className="min-w-[120px]">
+                  <div className="text-2xl sm:text-3xl font-black text-white">{stat.num}</div>
+                  <div className="mt-0.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white/45">
                     {stat.label}
                   </div>
                 </div>
@@ -149,7 +148,7 @@ export function HeroSection() {
                 {CREDIBILITY.map(({ src, alt }) => (
                   <div
                     key={alt}
-                    className="flex h-12 w-28 items-center justify-center rounded-md bg-white/10 p-2 backdrop-blur-sm transition-colors hover:bg-white/20"
+                    className="flex h-10 w-24 sm:h-12 sm:w-28 items-center justify-center rounded-md bg-white/10 p-2 backdrop-blur-sm transition-colors hover:bg-white/20"
                   >
                     <Image
                       src={src}
@@ -166,7 +165,7 @@ export function HeroSection() {
 
           {/* Right column — Form card */}
           <div
-            className="animate-slideIn mt-12 w-full shrink-0 lg:mt-0 lg:w-[400px] xl:w-[430px]"
+            className="animate-slideIn mt-8 w-full shrink-0 lg:mt-0 lg:w-[430px] xl:w-[480px] max-w-md sm:max-w-lg"
             style={{ animationDelay: "0.2s" }}
           >
             <div className="rounded-2xl bg-white p-8 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.5)]">
@@ -186,8 +185,8 @@ export function HeroSection() {
               </p>
 
               {/* Form fields */}
-              <div className="flex flex-col gap-3">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="flex flex-col gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {/* Name (full width – spans both cols) */}
                   <div className="col-span-2 flex flex-col gap-1">
                     <label className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">

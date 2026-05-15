@@ -13,14 +13,6 @@ export type Service = {
 // TODO: Replace with real content copied from usaghostwriter.com
 export const services: Service[] = [
   {
-    id: 1,
-    title: "Book Publishing",
-    slug: "book-publishing",
-    description: "End-to-end support from manuscript to market-ready release.",
-    features: ["Publishing strategy", "ISBN support", "Distribution setup"],
-    icon: BookOpen,
-  },
-  {
     id: 2,
     title: "Book Editing",
     slug: "book-editing",
@@ -116,10 +108,17 @@ export const services: Service[] = [
     features: ["Language adaptation", "Cultural localization", "Quality review"],
     icon: Languages,
   },
+  {
+    id: 1,
+    title: "Book Publishing",
+    slug: "book-publishing",
+    description: "End-to-end support from manuscript to market-ready release.",
+    features: ["Publishing strategy", "ISBN support", "Distribution setup"],
+    icon: BookOpen,
+  },
 ];
 
 export const featuredServiceSlugs = [
-  "book-publishing",
   "book-editing",
   "proofreading",
   "book-formatting",
@@ -127,6 +126,7 @@ export const featuredServiceSlugs = [
   "audio-book",
   "book-marketing",
   "book-translation",
+  "book-publishing",
 ];
 
 export const serviceSlugs = services.map((service) => service.slug);

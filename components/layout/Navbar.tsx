@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ChevronDown, Mail, MapPin, Menu, Phone } from "lucide-react";
@@ -96,9 +97,16 @@ export function Navbar() {
       <div className="mx-auto flex h-[4.5rem] max-w-container items-center justify-between px-4">
         <Link
           href="/"
-          className="font-serif text-xl font-semibold tracking-tight text-brand-green transition-opacity hover:opacity-80"
+          className="flex items-center gap-3 font-serif text-xl font-semibold tracking-tight text-brand-green transition-opacity hover:opacity-80"
         >
-          {SITE_NAME}
+          <Image
+            src="/usa-logo.jpeg"
+            alt="USA Ghost Writer logo"
+            width={40}
+            height={40}
+            className="object-contain rounded-sm"
+          />
+          <span className="leading-none">{SITE_NAME}</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">

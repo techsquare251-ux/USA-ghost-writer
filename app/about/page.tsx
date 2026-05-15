@@ -26,17 +26,38 @@ export default function AboutPage() {
         <div>
           <SectionHeader
             eyebrow="Our Story"
-            title="Built to Make Publishing Professional and Predictable"
-            subtitle="Since Feb 22, 2023, we have helped authors move from raw draft to polished publication with strong editorial oversight and reliable project execution."
+            title="A Ghostwriting Partner"
+            subtitle="Built for Author Success"
           />
+
           <div className="mt-5 space-y-4 text-brand-muted">
             <p>
-              Our model is simple: align quality standards early, communicate often, and deliver with measurable milestones.
+              We transform ideas, stories, and expertise into professionally written books that reflect your voice and vision.
             </p>
             <p>
-              We combine editorial, design, and production expertise so authors get one cohesive team instead of fragmented freelancers.
+              Our ghostwriting team works closely with authors through every stage of the writing journey — with creativity, confidentiality, and a clear process from concept to completion.
             </p>
           </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <article className="rounded-xl border border-brand-green/10 bg-white p-5">
+              <h3 className="text-lg font-semibold text-brand-charcoal">Story-Driven Writing</h3>
+              <p className="mt-2 text-sm text-brand-muted">From outlines to final chapters, every word is crafted to engage readers and match your unique voice.</p>
+            </article>
+            <article className="rounded-xl border border-brand-green/10 bg-white p-5">
+              <h3 className="text-lg font-semibold text-brand-charcoal">Complete Book Creation</h3>
+              <p className="mt-2 text-sm text-brand-muted">Writing, editing, formatting, cover design, and publishing support — all under one roof.</p>
+            </article>
+            <article className="rounded-xl border border-brand-green/10 bg-white p-5">
+              <h3 className="text-lg font-semibold text-brand-charcoal">Publish-Ready Quality</h3>
+              <p className="mt-2 text-sm text-brand-muted">Your manuscript is professionally polished, refined, and prepared for global publishing platforms.</p>
+            </article>
+          </div>
+
+          <figure className="mt-8 border-l-2 border-primary pl-4">
+            <blockquote className="text-lg italic text-primary">“We do not just write books — we turn ideas into powerful stories readers remember.”</blockquote>
+            <figcaption className="mt-3 text-sm font-bold uppercase text-accent">— YOUR GHOSTWRITING TEAM</figcaption>
+          </figure>
         </div>
 
         <div className="">

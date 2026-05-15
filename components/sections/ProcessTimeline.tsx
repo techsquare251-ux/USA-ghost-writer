@@ -26,16 +26,22 @@ const ARROW_SIZE = 44;
 function ArrowBanner({
   isRight,
   children,
+  isMobile = false,
 }: {
   isRight: boolean;
   children: React.ReactNode;
+  isMobile?: boolean;
 }) {
-  const clipRight = `polygon(0 0, calc(100% - ${ARROW_SIZE}px) 0, 100% 50%, calc(100% - ${ARROW_SIZE}px) 100%, 0 100%, ${ARROW_SIZE}px 50%)`;
-  const clipLeft = `polygon(${ARROW_SIZE}px 0, 100% 0, 100% 100%, ${ARROW_SIZE}px 100%, 0 50%)`;
+  const arrowSize = isMobile ? 28 : ARROW_SIZE;
+  const clipRight = `polygon(0 0, calc(100% - ${arrowSize}px) 0, 100% 50%, calc(100% - ${arrowSize}px) 100%, 0 100%, ${arrowSize}px 50%)`;
+  const clipLeft = `polygon(${arrowSize}px 0, 100% 0, 100% 100%, ${arrowSize}px 100%, 0 50%)`;
+
+  const heightClass = isMobile ? "h-auto" : "h-24";
+  const paddingClass = isMobile ? "py-3" : "";
 
   return (
     <div
-      className="relative flex h-24 w-full items-center bg-white shadow-[0_6px_30px_-8px_rgba(0,0,0,0.12)]"
+      className={`relative flex ${heightClass} ${paddingClass} w-full items-center bg-white shadow-[0_6px_30px_-8px_rgba(0,0,0,0.12)]`}
       style={{ clipPath: isRight ? clipRight : clipLeft }}
     >
       {children}
@@ -85,12 +91,13 @@ export function ProcessTimeline() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
+                className="gap-4"
               >
-                <ArrowBanner isRight={isRight}>
+                <ArrowBanner isRight={isRight} isMobile={false}>
                   {isRight ? (
                     <>
                       {/* Left: numbered badge */}
-                      <div className="flex shrink-0 items-center justify-center pl-10 pr-4">
+                      <div className="hidden sm:flex shrink-0 items-center justify-center pl-10 pr-4">
                         <div className="relative flex size-12 shrink-0 items-center justify-center">
                           {/* Diamond / rotated square */}
                           <div className="absolute inset-0 rotate-45 rounded-sm bg-secondary" />
@@ -100,21 +107,40 @@ export function ProcessTimeline() {
                         </div>
                       </div>
 
+                      {/* Left: numbered badge - Mobile */}
+                      <div className="flex sm:hidden shrink-0 items-center justify-center pl-3 pr-2">
+                        <div className="relative flex size-8 shrink-0 items-center justify-center">
+                          <div className="absolute inset-0 rotate-45 rounded-sm bg-secondary" />
+                          <span className="relative text-xs font-bold text-white">
+                            {stepLabel}
+                          </span>
+                        </div>
+                      </div>
+
                       {/* Middle: text */}
-                      <div className="flex-1 px-3">
-                        <p className="text-base font-bold text-brand-charcoal">
+                      <div className="flex-1 px-2 sm:px-3">
+                        <p className="text-xs sm:text-base font-bold text-brand-charcoal">
                           {step.title}:
                         </p>
-                        <p className="mt-0.5 text-xs leading-5 text-brand-muted">
+                        <p className="mt-0.5 text-xs leading-4 sm:leading-5 text-brand-muted">
                           {step.description}
                         </p>
                       </div>
 
                       {/* Right: icon badge */}
-                      <div className="flex shrink-0 items-center justify-center pr-12 pl-2">
+                      <div className="hidden sm:flex shrink-0 items-center justify-center pr-12 pl-2">
                         <div className="flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-secondary/30 bg-white shadow-md">
                           {Icon && (
                             <Icon className="size-5 text-secondary" />
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right: icon badge - Mobile */}
+                      <div className="flex sm:hidden shrink-0 items-center justify-center pr-3 pl-2">
+                        <div className="flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-secondary/30 bg-white shadow-md">
+                          {Icon && (
+                            <Icon className="size-4 text-secondary" />
                           )}
                         </div>
                       </div>
@@ -122,7 +148,7 @@ export function ProcessTimeline() {
                   ) : (
                     <>
                       {/* Left: icon badge */}
-                      <div className="flex shrink-0 items-center justify-center pl-12 pr-2">
+                      <div className="hidden sm:flex shrink-0 items-center justify-center pl-12 pr-2">
                         <div className="flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-[#e07b2a]/30 bg-white shadow-md">
                           {Icon && (
                             <Icon className="size-5 text-[#e07b2a]" />
@@ -130,21 +156,40 @@ export function ProcessTimeline() {
                         </div>
                       </div>
 
+                      {/* Left: icon badge - Mobile */}
+                      <div className="flex sm:hidden shrink-0 items-center justify-center pl-3 pr-2">
+                        <div className="flex size-8 shrink-0 items-center justify-center rounded-full border-2 border-[#e07b2a]/30 bg-white shadow-md">
+                          {Icon && (
+                            <Icon className="size-4 text-[#e07b2a]" />
+                          )}
+                        </div>
+                      </div>
+
                       {/* Middle: text (right-aligned for even rows) */}
-                      <div className="flex-1 px-3 text-right">
-                        <p className="text-base font-bold text-brand-charcoal">
+                      <div className="flex-1 px-2 sm:px-3 text-left sm:text-right">
+                        <p className="text-xs sm:text-base font-bold text-brand-charcoal">
                           {step.title}:
                         </p>
-                        <p className="mt-0.5 text-xs leading-5 text-brand-muted">
+                        <p className="mt-0.5 text-xs leading-4 sm:leading-5 text-brand-muted">
                           {step.description}
                         </p>
                       </div>
 
                       {/* Right: numbered badge */}
-                      <div className="flex shrink-0 items-center justify-center pr-10 pl-4">
+                      <div className="hidden sm:flex shrink-0 items-center justify-center pr-10 pl-4">
                         <div className="relative flex size-12 shrink-0 items-center justify-center">
                           <div className="absolute inset-0 rotate-45 rounded-sm bg-[#e07b2a]" />
                           <span className="relative text-sm font-bold text-white">
+                            {stepLabel}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Right: numbered badge - Mobile */}
+                      <div className="flex sm:hidden shrink-0 items-center justify-center pr-3 pl-2">
+                        <div className="relative flex size-8 shrink-0 items-center justify-center">
+                          <div className="absolute inset-0 rotate-45 rounded-sm bg-[#e07b2a]" />
+                          <span className="relative text-xs font-bold text-white">
                             {stepLabel}
                           </span>
                         </div>

@@ -11,19 +11,20 @@ import { getServiceBySlug, serviceSlugs, services } from "@/src/data/services";
 import { ServiceCard } from "@/components/common/ServiceCard";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 
+// Local image map (files under `public/our-services/`).
 const serviceImages: Record<string, string> = {
   "book-publishing": "/our-services/publishing.png",
   "book-editing": "/our-services/editing.png",
   proofreading: "/our-services/proofreading.png",
   "book-formatting": "/our-services/print-on-demand.png",
-  "typesetting-layout-adjustment": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+  "typesetting-layout-adjustment": "/our-services/typesetting and layout.jpeg",
   "print-on-demand": "/our-services/print-on-demand.png",
-  "document-processing": "https://images.unsplash.com/photo-1515336724527-8d4e2b7a0f1d?auto=format&fit=crop&w=1200&q=85",
+  "document-processing": "/our-services/document-processing.jpeg",
   "audio-book": "/our-services/audio book.png",
-  "isbn-and-barcode": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85",
+  "isbn-and-barcode": "/our-services/isbn-barcode.jpeg",
   "book-marketing": "/our-services/marketing.png",
-  "childrens-book-illustration": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1200&q=85",
-  "book-illustration-services": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=85",
+  "childrens-book-illustration": "/our-services/child book.jpeg",
+  "book-illustration-services": "/our-services/book-illustration.jpeg",
   "book-translation": "/our-services/translation.png",
 };
 
@@ -122,7 +123,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       <section className="mx-auto grid max-w-container gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center">
         <div className="">
           <Image
-            src={serviceImages[service.slug] ?? "/banner.jpg"}
+            src={encodeURI(serviceImages[service.slug] ?? "/banner.jpg")}
             alt={`${service.title} preview`}
             width={920}
             height={1080}

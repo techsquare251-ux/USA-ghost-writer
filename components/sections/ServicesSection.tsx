@@ -19,10 +19,15 @@ export function ServicesSection() {
     "book-publishing": "/our-services/publishing.png",
     "book-editing": "/our-services/editing.png",
     proofreading: "/our-services/proofreading.png",
-    "book-formatting": "/our-services/publishing.png",
+    "book-formatting": "/our-services/print-on-demand.png",
+    "typesetting-layout-adjustment": "/our-services/typesetting and layout.jpeg",
     "print-on-demand": "/our-services/print-on-demand.png",
+    "document-processing": "/our-services/document-processing.jpeg",
     "audio-book": "/our-services/audio book.png",
+    "isbn-and-barcode": "/our-services/isbn-barcode.jpeg",
     "book-marketing": "/our-services/marketing.png",
+    "childrens-book-illustration": "/our-services/child book.jpeg",
+    "book-illustration-services": "/our-services/book-illustration.jpeg",
     "book-translation": "/our-services/translation.png",
   };
 

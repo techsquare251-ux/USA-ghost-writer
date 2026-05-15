@@ -14,18 +14,18 @@ const STATS = [
 const FEATURES = [
   {
     icon: PenLine,
-    title: "Editorial Excellence",
-    desc: "From ghostwriting to proofreading, every word is shaped with intention.",
+    title: "Story-Driven Writing",
+    desc: "From outlines to final chapters, every word is crafted to engage readers and match your unique voice.",
   },
   {
     icon: BookOpen,
-    title: "End-to-End Publishing",
-    desc: "Editing, design, formatting, distribution — all under one roof.",
+    title: "Complete Book Creation",
+    desc: "Writing, editing, formatting, cover design, and publishing support — all under one roof.",
   },
   {
     icon: Star,
-    title: "Launch-Ready Quality",
-    desc: "Your book goes to market polished, positioned, and print-ready.",
+    title: "Publish-Ready Quality",
+    desc: "Your manuscript is professionally polished, refined, and prepared for global publishing platforms.",
   },
 ];
 
@@ -129,10 +129,10 @@ export function AboutSection() {
             viewport={VIEW}
             transition={{ duration: 0.6, ease: EASE, delay: 0.18 }}
           >
-            A Publishing Partner{" "}
+            A Ghostwriting Partner{" "}
             <br className="hidden sm:block" />
             <em className="not-italic text-primary">Built for Author</em>{" "}
-            <span className="text-secondary">Confidence</span>
+            <span className="text-secondary">Success</span>
           </motion.h2>
 
           {/* accent bar */}
@@ -154,15 +154,10 @@ export function AboutSection() {
             transition={{ duration: 0.55, ease: EASE, delay: 0.32 }}
           >
             <p>
-              We blend editorial care, design rigor, and launch strategy so your
-              story feels{" "}
-              <strong className="font-semibold text-primary">
-                premium and ready for readers.
-              </strong>
+              We transform ideas, stories, and expertise into professionally written books that reflect your voice and vision.
             </p>
             <p>
-              USA Ghost Writer supports authors through every phase of
-              publication with clarity, consistency, and measurable milestones.
+              Our ghostwriting team works closely with authors through every stage of the writing journey — with creativity, confidentiality, and a clear process from concept to completion.
             </p>
           </motion.div>
 
@@ -196,11 +191,10 @@ export function AboutSection() {
             transition={{ duration: 0.55, ease: EASE, delay: 0.48 }}
           >
             <p className="text-[15px] italic leading-6 text-primary">
-              &ldquo;We do not just publish books — we build author careers, one
-              manuscript at a time.&rdquo;
+              &ldquo;We do not just write books — we turn ideas into powerful stories readers remember.&rdquo;
             </p>
             <cite className="mt-2 block text-[10px] font-bold not-italic uppercase tracking-[0.18em] text-accent">
-              — USA Ghost Writer Team
+              — YOUR GHOSTWRITING TEAM
             </cite>
           </motion.blockquote>
 
