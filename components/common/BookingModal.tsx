@@ -1,12 +1,19 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Toast } from "@/components/common/Toast";
 
 const DEFAULT_DATE_OFFSET_DAYS = 1;
+
+const getDefaultDate = () => {
+  const date = new Date();
+  date.setDate(date.getDate() + DEFAULT_DATE_OFFSET_DAYS);
+  return date.toISOString().split("T")[0] ?? "";
+};
 
 type BookingModalProps = {
   open: boolean;
@@ -29,6 +36,7 @@ type BookingPayload = {
 };
 
 export function BookingModal({ open, onClose }: BookingModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [serverMessage, setServerMessage] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -39,7 +47,7 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
     name: "",
     email: "",
     phone: "",
-    date: "",
+    date: getDefaultDate(),
     start_time: "",
     message: "",
     context: "booking",
@@ -51,14 +59,22 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
   );
 
   useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
-    if (!formValues.date) {
-      const date = new Date();
-      date.setDate(date.getDate() + DEFAULT_DATE_OFFSET_DAYS);
-      const iso = date.toISOString().split("T")[0] ?? "";
-      setFormValues((prev) => ({ ...prev, date: iso }));
-    }
-  }, [open, formValues.date]);
+    setFormValues((prev) => (prev.date ? prev : { ...prev, date: getDefaultDate() }));
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    setSelectedSlot("");
+    setAvailableSlots([]);
+    setIsLoading(true);
+    setServerMessage("");
+  }, [open]);
 
   useEffect(() => {
     if (!open || !formValues.date) return;
@@ -68,6 +84,7 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
       setIsLoading(true);
       setServerMessage("");
       try {
+        setIsLoading(true);
         const response = await fetch(
           `${apiBaseUrl}/api/schedule/availability?date=${formValues.date}`,
           { signal: controller.signal }
@@ -154,11 +171,11 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
     setServerMessage("");
   };
 
-  if (!open) return null;
+  if (!open || !mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/45 px-4 py-6 sm:items-center">
-      <div className="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_30px_90px_-40px_rgba(15,23,42,0.6)]">
+  const modal = (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/45 px-4 py-4 sm:px-6 sm:py-6">
+      <div className="relative w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-[0_30px_90px_-40px_rgba(15,23,42,0.6)] max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-3rem)]">
         <button
           type="button"
           onClick={onClose}
@@ -168,7 +185,7 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
           <X className="size-4" aria-hidden="true" />
         </button>
 
-        <div className="grid max-h-[86vh] gap-6 overflow-y-auto p-6 sm:max-h-[80vh] sm:p-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 overflow-y-auto p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Book a call</p>
             <h3 className="mt-2 font-display text-2xl font-semibold text-brand-charcoal">Schedule your 15-minute consult</h3>
@@ -255,4 +272,6 @@ export function BookingModal({ open, onClose }: BookingModalProps) {
       <Toast message={serverMessage} variant={isSuccess ? "success" : "error"} onClose={handleToastClose} />
     </div>
   );
+
+  return createPortal(modal, document.body);
 }

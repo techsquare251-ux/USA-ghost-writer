@@ -40,9 +40,6 @@ export function Navbar() {
 
   const handleBookingClose = () => {
     setBookingOpen(false);
-    if (typeof window !== "undefined") {
-      window.sessionStorage.setItem("bookingPromptSeen", "true");
-    }
   };
 
   useEffect(() => {
@@ -50,16 +47,6 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.sessionStorage.getItem("bookingPromptSeen")) return;
-    const timer = window.setTimeout(() => {
-      setBookingOpen(true);
-      window.sessionStorage.setItem("bookingPromptSeen", "true");
-    }, 10000);
-    return () => window.clearTimeout(timer);
   }, []);
 
   const isActive = (href: string) => {
