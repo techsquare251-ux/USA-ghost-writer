@@ -9,6 +9,23 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { getServiceBySlug, serviceSlugs, services } from "@/src/data/services";
 import { ServiceCard } from "@/components/common/ServiceCard";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+
+const serviceImages: Record<string, string> = {
+  "book-publishing": "/our-services/publishing.png",
+  "book-editing": "/our-services/editing.png",
+  proofreading: "/our-services/proofreading.png",
+  "book-formatting": "/our-services/print-on-demand.png",
+  "typesetting-layout-adjustment": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+  "print-on-demand": "/our-services/print-on-demand.png",
+  "document-processing": "https://images.unsplash.com/photo-1515336724527-8d4e2b7a0f1d?auto=format&fit=crop&w=1200&q=85",
+  "audio-book": "/our-services/audio book.png",
+  "isbn-and-barcode": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85",
+  "book-marketing": "/our-services/marketing.png",
+  "childrens-book-illustration": "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1200&q=85",
+  "book-illustration-services": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=85",
+  "book-translation": "/our-services/translation.png",
+};
 
 type ServicePageProps = {
   params: {
@@ -103,13 +120,13 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       <PageHero title={service.title} current={service.title} />
 
       <section className="mx-auto grid max-w-container gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center">
-        <div className="overflow-hidden rounded-2xl border border-brand-green/10 bg-white p-3 shadow-sm">
+        <div className="">
           <Image
-            src={`https://picsum.photos/seed/service-${service.slug}/920/1080`}
-            alt={`${service.title} consulting preview`}
+            src={serviceImages[service.slug] ?? "/banner.jpg"}
+            alt={`${service.title} preview`}
             width={920}
             height={1080}
-            className="h-full w-full rounded-xl object-cover"
+            className="h-full w-full rounded-xl object-cover object-center"
           />
         </div>
 
@@ -149,8 +166,9 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-container px-4 py-10">
-        <SectionHeader centered eyebrow="Our Process" title="A Clear 3-Step Workflow" />
+      {/* <section className="mx-auto max-w-container px-4 py-10"> */}
+        <ProcessTimeline/>
+        {/* <SectionHeader centered eyebrow="Our Process" title="A Clear 3-Step Workflow" />
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {processSteps.map((step, idx) => (
             <article key={step.title} className="rounded-xl border border-brand-green/10 bg-brand-cream p-5">
@@ -159,8 +177,8 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
               <p className="mt-2 text-sm leading-7 text-brand-muted">{step.description}</p>
             </article>
           ))}
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
       <section className="mx-auto max-w-container px-4 py-10">
         <SectionHeader centered eyebrow="Related" title="Related Services" />

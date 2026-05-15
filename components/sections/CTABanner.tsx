@@ -36,7 +36,7 @@ export function CTABanner({
 
         {/* ── Floating book ── */}
         <motion.div
-          className="absolute -left-8 top-1/2 z-20 w-[130px] -translate-y-[62%] sm:w-[150px] md:-left-10 md:w-[170px]"
+          className="absolute -left-8 top-50% z-20 w-[130px] -translate-y-[10%] sm:w-[150px] md:-left-10 md:w-[170px]"
           animate={{ y: [0, -14, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
         >

@@ -5,6 +5,7 @@ import { DistributionLogos } from "@/components/sections/DistributionLogos";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { PackagesSection } from "@/components/sections/PackagesSection";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
@@ -59,24 +60,27 @@ export default function Home() {
         <ServicesSection />
       </MotionReveal>
       <MotionReveal delay={0.1}>
-        <CTABanner />
+        <PackagesSection />
       </MotionReveal>
       <MotionReveal delay={0.12}>
-        <ProcessTimeline />
+        <CTABanner />
       </MotionReveal>
       <MotionReveal delay={0.14}>
-        <WhyChooseUsSection />
+        <ProcessTimeline />
       </MotionReveal>
       <MotionReveal delay={0.16}>
-        <TestimonialsSection />
+        <WhyChooseUsSection />
       </MotionReveal>
       <MotionReveal delay={0.18}>
-        <FAQAccordion items={homeFaqs} />
+        <TestimonialsSection />
       </MotionReveal>
       <MotionReveal delay={0.2}>
-        <ContactFormSection />
+        <FAQAccordion items={homeFaqs} />
       </MotionReveal>
       <MotionReveal delay={0.22}>
+        <ContactFormSection />
+      </MotionReveal>
+      <MotionReveal delay={0.24}>
         <AwardsSection />
       </MotionReveal>
     </>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Check } from "lucide-react";
 import { PageHero } from "@/components/common/PageHero";
-import { SectionHeader } from "@/components/common/SectionHeader";
+import { PackagesSection } from "@/components/sections/PackagesSection";
 import { publishingPackages } from "@/src/data/packages";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { homeFaqs } from "@/src/data/faqs";
@@ -16,65 +14,9 @@ export default function PackagesPage() {
   return (
     <>
       <PageHero title="Publishing Packages" current="Packages" />
+      <PackagesSection compact />
 
-      <section className="mx-auto max-w-container px-4 py-20">
-        <SectionHeader
-          centered
-          eyebrow="Plans"
-          title="Choose The Right Publishing Tier"
-          subtitle="Packages are grouped by depth of support, production scope, and launch intensity."
-        />
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {publishingPackages.map((item) => (
-            <article
-              key={item.name}
-              className={`rounded-2xl border p-6 shadow-sm ${
-                item.featured
-                  ? "border-brand-green bg-brand-green text-white shadow-[0_20px_50px_-24px_rgba(11,60,109,0.6)]"
-                  : "border-brand-green/10 bg-white text-brand-charcoal"
-              }`}
-            >
-              <p className={`text-sm ${item.featured ? "text-white/80" : "text-brand-muted"}`}>{item.name}</p>
-              <p className="mt-2 text-4xl font-semibold">{item.price}</p>
-
-              <div className="mt-5 space-y-4">
-                {item.featureGroups.map((group) => (
-                  <div key={group.title}>
-                    <h3 className={`text-sm font-semibold ${item.featured ? "text-white" : "text-brand-charcoal"}`}>
-                      {group.title}
-                    </h3>
-                    <ul className="mt-2 space-y-2">
-                      {group.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className={`flex items-start gap-2 text-sm ${item.featured ? "text-white/90" : "text-brand-muted"}`}
-                        >
-                          <Check className="mt-0.5 size-4 shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href={`/contact-us?package=${encodeURIComponent(item.name)}`}
-                className={`mt-6 inline-flex rounded-md px-4 py-2 text-sm font-semibold ${
-                  item.featured
-                    ? "bg-white text-secondary hover:bg-brand-cream"
-                    : "bg-secondary text-white shadow-[0_10px_24px_-14px_rgba(193,18,31,0.6)] hover:bg-secondary/90"
-                }`}
-              >
-                Get a Quote
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-container px-4 pb-12">
+      <section className="mx-auto max-w-container px-4 mt-10">
         <div className="overflow-x-auto rounded-2xl border border-brand-green/12 bg-white shadow-[0_10px_30px_-18px_rgba(11,60,109,0.3)]">
           <table className="min-w-full text-sm">
             <thead className="bg-brand-cream text-left text-brand-charcoal">

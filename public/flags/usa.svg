@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 247 130">
+  <rect width="247" height="130" fill="#b22234"/>
+  <g fill="#fff">
+    <rect y="10" width="247" height="10"/>
+    <rect y="30" width="247" height="10"/>
+    <rect y="50" width="247" height="10"/>
+    <rect y="70" width="247" height="10"/>
+    <rect y="90" width="247" height="10"/>
+    <rect y="110" width="247" height="10"/>
+  </g>
+  <rect width="98" height="70" fill="#3c3b6e"/>
+  <!-- simplified stars grid -->
+  <g fill="#fff">
+    <!-- 5 rows x 6 cols simplified -->
+    <g transform="translate(6,6)">
+      <g id="row">
+        <circle cx="0" cy="0" r="2"/>
+      </g>
+      <!-- replicate rows and cols -->
+      <g>
+        <use href="#row" x="0" y="0"/>
+        <use href="#row" x="16" y="0"/>
+        <use href="#row" x="32" y="0"/>
+        <use href="#row" x="48" y="0"/>
+        <use href="#row" x="64" y="0"/>
+        <use href="#row" x="80" y="0"/>
+      </g>
+      <g transform="translate(0,12)">
+        <use href="#row" x="8" y="0"/>
+        <use href="#row" x="24" y="0"/>
+        <use href="#row" x="40" y="0"/>
+        <use href="#row" x="56" y="0"/>
+        <use href="#row" x="72" y="0"/>
+      </g>
+      <g transform="translate(0,24)">
+        <use href="#row" x="0" y="0"/>
+        <use href="#row" x="16" y="0"/>
+        <use href="#row" x="32" y="0"/>
+        <use href="#row" x="48" y="0"/>
+        <use href="#row" x="64" y="0"/>
+        <use href="#row" x="80" y="0"/>
+      </g>
+      <g transform="translate(0,36)">
+        <use href="#row" x="8" y="0"/>
+        <use href="#row" x="24" y="0"/>
+        <use href="#row" x="40" y="0"/>
+        <use href="#row" x="56" y="0"/>
+        <use href="#row" x="72" y="0"/>
+      </g>
+      <g transform="translate(0,48)">
+        <use href="#row" x="0" y="0"/>
+        <use href="#row" x="16" y="0"/>
+        <use href="#row" x="32" y="0"/>
+        <use href="#row" x="48" y="0"/>
+        <use href="#row" x="64" y="0"/>
+        <use href="#row" x="80" y="0"/>
+      </g>
+    </g>
+  </g>
+</svg>

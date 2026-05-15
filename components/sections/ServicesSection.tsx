@@ -15,6 +15,17 @@ export function ServicesSection() {
   );
   const [active, setActive] = useState(featured[0]);
 
+  const serviceImages: Record<string, string> = {
+    "book-publishing": "/our-services/publishing.png",
+    "book-editing": "/our-services/editing.png",
+    proofreading: "/our-services/proofreading.png",
+    "book-formatting": "/our-services/publishing.png",
+    "print-on-demand": "/our-services/print-on-demand.png",
+    "audio-book": "/our-services/audio book.png",
+    "book-marketing": "/our-services/marketing.png",
+    "book-translation": "/our-services/translation.png",
+  };
+
   return (
     <section className="bg-gradient-to-b from-brand-cream/70 to-white py-24">
       <div className="mx-auto max-w-container px-4">
@@ -63,12 +74,13 @@ export function ServicesSection() {
 
           {/* Service preview */}
           <article className="overflow-hidden rounded-3xl border border-brand-green/10 bg-white shadow-[0_16px_50px_-24px_rgba(11,60,109,0.35)]">
-            <div className="relative h-52 overflow-hidden">
+            <div className="relative h-56 sm:h-64 overflow-hidden bg-white flex items-center justify-center p-6">
               <Image
-                src={`https://picsum.photos/seed/${active.slug}/800/500`}
+                src={encodeURI(serviceImages[active.slug] ?? `/our-services/${active.slug}.png`)}
                 alt={`${active.title} service preview`}
-                fill
-                className="object-cover"
+                width={640}
+                height={360}
+                className="max-w-full max-h-full object-contain"
               />
               <div
                 aria-hidden="true"

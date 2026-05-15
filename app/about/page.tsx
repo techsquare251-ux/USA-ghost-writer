@@ -39,13 +39,13 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-brand-green/10 bg-white p-3 shadow-sm">
+        <div className="">
           <Image
-            src="https://picsum.photos/seed/about-page/900/1080"
-            alt="Publishing team meeting with author"
+            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=85"
+            alt="Book shop interior"
             width={900}
             height={1080}
-            className="h-full w-full rounded-xl object-cover"
+            className="h-full w-full rounded-xl object-cover object-center"
           />
         </div>
       </section>

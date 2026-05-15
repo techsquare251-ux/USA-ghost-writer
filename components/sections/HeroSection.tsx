@@ -297,38 +297,6 @@ export function HeroSection() {
           </div>
         </div>
       </section>
-
-      {/* ── Scrolling ticker ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex h-9 items-center overflow-hidden border-t border-white/8 bg-primary">
-        <div className="ticker-track flex shrink-0 whitespace-nowrap">
-          {[
-            "Book Editing",
-            "Cover Design",
-            "Interior Formatting",
-            "eBook Conversion",
-            "Amazon KDP Publishing",
-            "Marketing Strategy",
-            "Ghostwriting",
-            "Proofreading",
-            "Book Editing",
-            "Cover Design",
-            "Interior Formatting",
-            "eBook Conversion",
-            "Amazon KDP Publishing",
-            "Marketing Strategy",
-            "Ghostwriting",
-            "Proofreading",
-          ].map((item, index) => (
-            <span
-              key={`${item}-${index}`}
-              className="flex items-center gap-2 border-r border-white/8 px-9 font-mono text-[9px] uppercase tracking-[0.16em] text-white/40"
-            >
-              {item}
-              <span className="text-[8px] text-accent">*</span>
-            </span>
-          ))}
-        </div>
-      </div>
     </>
   );
 }

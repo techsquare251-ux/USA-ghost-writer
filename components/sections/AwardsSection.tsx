@@ -9,31 +9,23 @@ export function AwardsSection() {
         <SectionHeader
           centered
           eyebrow="Awards & Recognition"
-          title="Trusted Standards. Recognized Outcomes."
-          subtitle="Badges and recognitions reflecting our commitment to dependable publishing quality."
+          title="Our Awards"
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
           {awards.map((award) => (
             <article
               key={award.id}
-              className="group overflow-hidden rounded-2xl border border-brand-green/10 bg-white shadow-[0_10px_30px_-18px_rgba(11,60,109,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/30 hover:shadow-[0_16px_40px_-16px_rgba(11,60,109,0.45)]"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_12px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-18px_rgba(15,23,42,0.26)]"
             >
-              <div className="relative h-44 overflow-hidden bg-brand-cream">
+              <div className="relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-white p-6">
                 <Image
                   src={award.image}
                   alt={award.name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
                 />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent"
-                />
-              </div>
-              <div className="p-5">
-                <h3 className="text-base font-semibold text-brand-charcoal">{award.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-brand-muted">{award.description}</p>
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-slate-100/45" />
               </div>
             </article>
           ))}
