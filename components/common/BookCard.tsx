@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { PortfolioBook } from "@/src/data/portfolio";
+import { PORTFOLIO_CATEGORY_LABELS } from "@/src/data/portfolio";
 
 type BookCardProps = {
   book: PortfolioBook;
@@ -16,6 +17,9 @@ export function BookCard({ book }: BookCardProps) {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
+          <div className="absolute left-3 top-3 rounded-full bg-black/65 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+            {PORTFOLIO_CATEGORY_LABELS[book.category]}
+          </div>
           <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/65 via-black/5 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <span className="rounded border border-white/40 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur-sm">
               View Book

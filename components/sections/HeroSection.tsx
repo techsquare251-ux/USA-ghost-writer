@@ -79,7 +79,8 @@ export function HeroSection() {
         {/* ── Background image ── */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <Image
-            src="/hero-section-background.jpeg"
+            // src="/hero-section-background.jpeg"
+            src="/hero-bg2.jpeg"
             alt=""
             fill
             priority
