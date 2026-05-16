@@ -130,18 +130,19 @@ export function TestimonialsSection() {
 
   return (
     <section className="relative overflow-hidden py-24 text-white">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0">
-          <Image
-            src="/hero-bg.jpg"
-            alt=""
-            fill
-            className="h-full w-full object-cover object-center"
-            priority={false}
-          />
-        </div>
-        <div className="absolute inset-0 bg-[#071225]/82" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.03),transparent_40%)]" />
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src="/hero-bg2.jpeg"
+          alt=""
+          fill
+          priority={false}
+          className="object-cover object-left-top sm:object-center lg:object-left-top"
+        />
+
+        {/* Dark overlay — keeps text crisp */}
+        <div className="absolute inset-0 bg-[#020d1a]/80" />
+        {/* Left-to-right gradient to match hero section */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
       </div>
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-24 top-0 size-80 rounded-full bg-[#193d73]/35 blur-3xl" />
