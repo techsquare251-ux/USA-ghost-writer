@@ -11,9 +11,10 @@ export async function fetchPortfolioBooks(
     searchParams.set("category", category);
   }
 
-  const endpoint = apiBaseUrl
-    ? `${apiBaseUrl}/api/portfolio${searchParams.toString() ? `?${searchParams.toString()}` : ""}`
-    : `/api/portfolio${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+  const query = searchParams.toString();
+  const endpoint = typeof window === "undefined" && apiBaseUrl
+    ? `${apiBaseUrl}/api/portfolio${query ? `?${query}` : ""}`
+    : `/api/portfolio${query ? `?${query}` : ""}`;
 
   const response = await fetch(endpoint, {
     headers: { Accept: "application/json" },
