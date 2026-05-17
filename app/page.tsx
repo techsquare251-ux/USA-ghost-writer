@@ -16,9 +16,39 @@ import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { AwardsSection } from "@/components/sections/AwardsSection";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
   description:
-    "Premium self-publishing services for authors, from editing and formatting to launch and distribution.",
+    "Self-publishing services: editing, formatting, and distribution to get your book to market faster. Professional support and launch help — start today.",
+  openGraph: {
+    title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
+    description:
+      "Self-publishing services: editing, formatting, and distribution to get your book to market faster. Professional support and launch help — start today.",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    siteName: "USA Ghost Writer",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/social/og-home.webp`,
+        width: 1200,
+        height: 630,
+        alt: "USA Ghost Writer — Self-Publishing Services",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
+    description:
+      "Self-publishing services: editing, formatting, and distribution to get your book to market faster. Professional support and launch help — start today.",
+    images: [`${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/social/og-home.webp`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function Home() {
@@ -27,6 +57,10 @@ export default function Home() {
     "@type": "Organization",
     name: "USA Ghost Writer",
     url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    logo: {
+      "@type": "ImageObject",
+      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/our-cradibility/logo.webp`,
+    },
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -35,6 +69,24 @@ export default function Home() {
         email: "support@usaghostwriter.com",
       },
     ],
+    sameAs: [
+      "https://www.linkedin.com/company/usa-ghost-writer",
+      "https://twitter.com/usaghostwriter",
+      "https://www.facebook.com/usaghostwriter",
+      "https://www.instagram.com/usaghostwriter",
+      "https://www.youtube.com/@usaghostwriter",
+    ],
+  };
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "USA Ghost Writer",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 
   return (
@@ -42,6 +94,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
 
       <MotionReveal>

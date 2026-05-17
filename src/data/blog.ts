@@ -3,6 +3,7 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   category: string;
+  author?: string;
   coverImage: string;
   publishedAt: string;
   readMinutes: number;

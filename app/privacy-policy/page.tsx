@@ -2,8 +2,24 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Learn how USA Ghost Writer collects, uses, and protects your data.",
+  title: "Privacy Policy | Data & Cookies | USA Ghost Writer",
+  description: "Read our privacy practices: what data we collect, how it's used, and how to contact us about your data.",
+  openGraph: {
+    title: "Privacy Policy | Data & Cookies | USA Ghost Writer",
+    description: "Read our privacy practices: what data we collect, how it's used, and how to contact us about your data.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/privacy-policy`,
+    type: "website",
+  },
+  alternates: { canonical: "/privacy-policy" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/privacy-policy` },
+  ],
 };
 
 const sections = [
@@ -37,6 +53,7 @@ const sections = [
 export default function PrivacyPolicyPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="Privacy Policy" current="Privacy Policy" />
 
       <section className="mx-auto grid max-w-container gap-8 px-4 py-12 lg:grid-cols-[0.28fr_0.72fr]">

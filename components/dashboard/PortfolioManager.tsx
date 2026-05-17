@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { Edit3, LogOut, Plus, RefreshCcw, Save, Trash2, Upload, X } from "lucide-react";
 import { Toast } from "@/components/common/Toast";
 import { cn } from "@/lib/utils";
@@ -511,7 +512,13 @@ export function PortfolioManager() {
                   </div>
                   {coverImagePreview ? (
                     <div className="overflow-hidden rounded-md border border-slate-200 bg-slate-50">
-                      <img src={coverImagePreview} alt="Cover preview" className="h-48 w-full object-contain" />
+                      <Image
+                        src={coverImagePreview}
+                        alt="Cover preview"
+                        width={960}
+                        height={384}
+                        className="h-48 w-full object-contain"
+                      />
                     </div>
                   ) : null}
                 </div>

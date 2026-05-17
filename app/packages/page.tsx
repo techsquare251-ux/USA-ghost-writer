@@ -4,15 +4,42 @@ import { PackagesSection } from "@/components/sections/PackagesSection";
 import { publishingPackages } from "@/src/data/packages";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { homeFaqs } from "@/src/data/faqs";
+import FaqJsonLd from "@/components/seo/FaqJsonLd";
 
 export const metadata: Metadata = {
-  title: "Packages",
-  description: "Compare publishing packages and choose the right tier for your manuscript goals.",
+  title: "Publishing Packages | Prices & Tiers | USA Ghost Writer",
+  description:
+    "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
+  openGraph: {
+    title: "Publishing Packages | Prices & Tiers | USA Ghost Writer",
+    description:
+      "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Publishing Packages | Prices & Tiers | USA Ghost Writer",
+    description:
+      "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
+  },
+  alternates: { canonical: "/packages" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Packages", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages` },
+  ],
 };
 
 export default function PackagesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <FaqJsonLd items={homeFaqs} />
       <PageHero title="Publishing Packages" current="Packages" />
       <PackagesSection compact />
 

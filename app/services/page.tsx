@@ -6,13 +6,39 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { services } from "@/src/data/services";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Explore all publishing services from editing and formatting to marketing and translation.",
+  title: "Publishing Services | Ghostwriting & Editing | USA Ghost Writer",
+  description:
+    "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
+  openGraph: {
+    title: "Publishing Services | Ghostwriting & Editing | USA Ghost Writer",
+    description:
+      "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services`,
+    siteName: "USA Ghost Writer",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Publishing Services | Ghostwriting & Editing | USA Ghost Writer",
+    description:
+      "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
+  },
+  alternates: { canonical: "/services" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services` },
+  ],
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="Publishing Services" current="Services" />
 
       <section className="mx-auto max-w-container px-4 py-20">

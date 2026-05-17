@@ -5,8 +5,32 @@ import { PageHero } from "@/components/common/PageHero";
 import { blogPosts } from "@/src/data/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Insights on publishing, editing, and book marketing for independent authors.",
+  title: "Publishing Blog | Book Marketing & Writing Tips | USA Ghost Writer",
+  description:
+    "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
+  openGraph: {
+    title: "Publishing Blog | Book Marketing & Writing Tips | USA Ghost Writer",
+    description:
+      "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Publishing Blog | Book Marketing & Writing Tips | USA Ghost Writer",
+    description:
+      "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
+  },
+  alternates: { canonical: "/blog" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog` },
+  ],
 };
 
 export default function BlogPage() {
@@ -14,6 +38,7 @@ export default function BlogPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="Blog" current="Blog" />
 
       <section className="mx-auto max-w-container px-4 py-12">

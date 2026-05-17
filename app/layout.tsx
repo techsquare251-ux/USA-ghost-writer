@@ -68,6 +68,16 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} ${dmMono.variable} ${cormorant.variable}`}
     >
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/hero-bg2.jpeg" fetchPriority="high" />
+        <link rel="me" href="https://www.linkedin.com/company/usa-ghost-writer" />
+        <link rel="me" href="https://twitter.com/usaghostwriter" />
+      </head>
       <body className="bg-brand-cream font-sans text-brand-charcoal antialiased">
         <div className="relative flex min-h-screen flex-col">
           <Navbar />

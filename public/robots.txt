@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /login/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /wp-admin/
+Disallow: /private/
+Disallow: /*?search=
+Disallow: /*?sort=
+
+Sitemap: https://usaghostwriter.com/sitemap.xml

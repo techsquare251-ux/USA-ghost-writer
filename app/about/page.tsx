@@ -6,8 +6,33 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Learn about USA Ghost Writer, our story, values, and publishing support approach.",
+  title: "Ghostwriting Services | About Us | USA Ghost Writer",
+  description:
+    "Learn how USA Ghost Writer helps authors write, edit, and publish books with confidentiality and expertise. Meet our team and process.",
+  openGraph: {
+    title: "Ghostwriting Services | About Us | USA Ghost Writer",
+    description:
+      "Learn how USA Ghost Writer helps authors write, edit, and publish books with confidentiality and expertise. Meet our team and process.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/about`,
+    siteName: "USA Ghost Writer",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ghostwriting Services | About Us | USA Ghost Writer",
+    description:
+      "Learn how USA Ghost Writer helps authors write, edit, and publish books with confidentiality and expertise. Meet our team and process.",
+  },
+  alternates: { canonical: "/about" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "About", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/about` },
+  ],
 };
 
 const stats = [
@@ -20,6 +45,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="About USA Ghost Writer" current="About" />
 
       <section className="mx-auto grid max-w-container gap-8 px-4 py-20 lg:grid-cols-2 lg:items-center">

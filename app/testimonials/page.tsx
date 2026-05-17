@@ -5,13 +5,30 @@ import { PageHero } from "@/components/common/PageHero";
 import { textTestimonials, videoTestimonials } from "@/src/data/testimonials";
 
 export const metadata: Metadata = {
-  title: "Testimonials",
-  description: "Read text and video testimonials from authors who published with our team.",
+  title: "Testimonials & Reviews | Author Feedback | USA Ghost Writer",
+  description: "Read verified testimonials and reviews from authors who worked with USA Ghost Writer to publish their books.",
+  openGraph: {
+    title: "Testimonials & Reviews | Author Feedback | USA Ghost Writer",
+    description: "Read verified testimonials and reviews from authors who worked with USA Ghost Writer to publish their books.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/testimonials`,
+    type: "website",
+  },
+  alternates: { canonical: "/testimonials" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Testimonials", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/testimonials` },
+  ],
 };
 
 export default function TestimonialsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="Testimonials" current="Testimonials" />
 
       <section className="mx-auto max-w-container px-4 py-12">

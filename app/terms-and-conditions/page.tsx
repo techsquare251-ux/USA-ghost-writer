@@ -2,8 +2,24 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions",
-  description: "Review the terms governing use of USA Ghost Writer services and website content.",
+  title: "Terms & Conditions | USA Ghost Writer",
+  description: "Review the terms governing the use of USA Ghost Writer services, payment terms, and intellectual property policies.",
+  openGraph: {
+    title: "Terms & Conditions | USA Ghost Writer",
+    description: "Review the terms governing the use of USA Ghost Writer services, payment terms, and intellectual property policies.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions`,
+    type: "website",
+  },
+  alternates: { canonical: "/terms-and-conditions" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
+    { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions` },
+  ],
 };
 
 const sections = [
@@ -37,6 +53,7 @@ const sections = [
 export default function TermsAndConditionsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero title="Terms and Conditions" current="Terms" />
 
       <section className="mx-auto grid max-w-container gap-8 px-4 py-12 lg:grid-cols-[0.28fr_0.72fr]">

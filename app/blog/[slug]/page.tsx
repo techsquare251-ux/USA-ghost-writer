@@ -26,8 +26,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: post.title,
+    title: `${post.title} | Publishing Blog | USA Ghost Writer`,
     description: post.excerpt,
+    openGraph: {
+      title: `${post.title} | Publishing Blog | USA Ghost Writer`,
+      description: post.excerpt,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog/${post.slug}`,
+      images: [post.coverImage],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Publishing Blog | USA Ghost Writer`,
+      description: post.excerpt,
+    },
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 
@@ -46,15 +59,30 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
     author: {
-      "@type": "Organization",
-      name: "USA Ghost Writer",
+      "@type": "Person",
+      name: post.author ?? "USA Ghost Writer",
     },
     publisher: {
       "@type": "Organization",
       name: "USA Ghost Writer",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/our-cradibility/logo.webp`,
+      },
     },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${siteUrl}/blog/${post.slug}` },
+    ],
   };
 
   return (
@@ -63,6 +91,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <ReadingProgressBar />
       <PageHero title={post.title} current="Blog" />
 
