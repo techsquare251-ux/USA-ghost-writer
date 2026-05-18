@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions`,
     type: "website",
   },
-  alternates: { canonical: "/terms-and-conditions" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions` },
 };
 
 const breadcrumbSchema = {

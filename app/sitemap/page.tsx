@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Sitemap | USA Ghost Writer",
   description: "HTML sitemap listing main pages for easy navigation and crawlability.",
-  alternates: { canonical: "/sitemap" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/sitemap` },
 };
 
 export default function SitemapPage() {

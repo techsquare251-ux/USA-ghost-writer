@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Portfolio | Published Books | USA Ghost Writer",
     description: "Explore our portfolio of published books across genres and see examples of author projects we've produced.",
   },
-  alternates: { canonical: "/portfolio" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/portfolio` },
 };
 
 const breadcrumbSchema = {

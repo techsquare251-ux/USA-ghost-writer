@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/privacy-policy`,
     type: "website",
   },
-  alternates: { canonical: "/privacy-policy" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/privacy-policy` },
 };
 
 const breadcrumbSchema = {

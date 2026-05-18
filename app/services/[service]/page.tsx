@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: `${service.title} | Publishing Service | USA Ghost Writer`,
       description: service.description,
     },
-    alternates: { canonical: `/services/${service.slug}` },
+    alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services/${service.slug}` },
   };
 }
 

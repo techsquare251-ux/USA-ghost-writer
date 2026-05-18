@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Contact USA Ghost Writer to discuss ghostwriting, editing, or publishing packages. Request a free quote or schedule a consultation today.",
   },
-  alternates: { canonical: "/contact-us" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/contact-us` },
 };
 
 const breadcrumbSchema = {

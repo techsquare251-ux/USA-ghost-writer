@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: `${post.title} | Publishing Blog | USA Ghost Writer`,
       description: post.excerpt,
     },
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog/${post.slug}` },
   };
 }
 

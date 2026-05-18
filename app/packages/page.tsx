@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
   },
-  alternates: { canonical: "/packages" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages` },
 };
 
 const breadcrumbSchema = {

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
   },
-  alternates: { canonical: "/services" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services` },
 };
 
 const breadcrumbSchema = {

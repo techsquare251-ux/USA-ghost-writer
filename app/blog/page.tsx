@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description:
       "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
   },
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog` },
 };
 
 const breadcrumbSchema = {

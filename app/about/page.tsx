@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Learn how USA Ghost Writer helps authors write, edit, and publish books with confidentiality and expertise. Meet our team and process.",
   },
-  alternates: { canonical: "/about" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/about` },
 };
 
 const breadcrumbSchema = {
