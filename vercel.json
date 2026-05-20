@@ -15,7 +15,13 @@
   ],
   "redirects": [
     {
-      "source": "https://www.usaghostwriter.com/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.usaghostwriter.com"
+        }
+      ],
       "destination": "https://usaghostwriter.com/:path*",
       "permanent": true
     }
