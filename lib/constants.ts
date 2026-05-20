@@ -1,8 +1,8 @@
 export const SITE_NAME = "USA Ghost Writer";
 
 export const CONTACT = {
-  salesPhone: "+1 (406) 849-8235",
-  supportPhone: "+1 (406) 849-8235",
+  salesPhone: "+1 213 267 4279",
+  supportPhone: "+1 213 267 4279",
   email: "support@usaghostwriter.com",
   canadaAddress: "",
   usaAddress: "811 W 7th St,90017,Los angeles,United states",
