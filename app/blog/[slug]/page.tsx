@@ -5,6 +5,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { ReadingProgressBar } from "@/components/common/ReadingProgressBar";
 import { getBlogPostBySlug, blogPosts } from "@/src/data/blog";
 import { CTABanner } from "@/components/sections/CTABanner";
+import { SITE_URL } from "@/lib/site-url";
 
 type BlogPostPageProps = {
   params: {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     openGraph: {
       title: `${post.title} | Publishing Blog | USA Ghost Writer`,
       description: post.excerpt,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}`,
       images: [post.coverImage],
       type: "article",
     },
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: `${post.title} | Publishing Blog | USA Ghost Writer`,
       description: post.excerpt,
     },
-    alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog/${post.slug}` },
+    alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
   };
 }
 
@@ -52,7 +53,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const relatedPosts = blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
+  const siteUrl = SITE_URL;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",

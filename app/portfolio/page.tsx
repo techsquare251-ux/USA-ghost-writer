@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
 import { PortfolioClient } from "./portfolio-client";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Portfolio | Published Books | USA Ghost Writer",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Portfolio | Published Books | USA Ghost Writer",
     description: "Explore our portfolio of published books across genres and see examples of author projects we've produced.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/portfolio`,
+    url: `${SITE_URL}/portfolio`,
     type: "website",
   },
   twitter: {
@@ -16,15 +17,15 @@ export const metadata: Metadata = {
     title: "Portfolio | Published Books | USA Ghost Writer",
     description: "Explore our portfolio of published books across genres and see examples of author projects we've produced.",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/portfolio` },
+  alternates: { canonical: `${SITE_URL}/portfolio` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Portfolio", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/portfolio` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Portfolio", item: `${SITE_URL}/portfolio` },
   ],
 };
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { PageHero } from "@/components/common/PageHero";
 import { textTestimonials, videoTestimonials } from "@/src/data/testimonials";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Testimonials & Reviews | Author Feedback | USA Ghost Writer",
@@ -10,18 +11,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Testimonials & Reviews | Author Feedback | USA Ghost Writer",
     description: "Read verified testimonials and reviews from authors who worked with USA Ghost Writer to publish their books.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/testimonials`,
+    url: `${SITE_URL}/testimonials`,
     type: "website",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/testimonials` },
+  alternates: { canonical: `${SITE_URL}/testimonials` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Testimonials", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/testimonials` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Testimonials", item: `${SITE_URL}/testimonials` },
   ],
 };
 

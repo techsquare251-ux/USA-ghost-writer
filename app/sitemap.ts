@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { serviceSlugs } from "@/src/data/services";
 import { blogPosts } from "@/src/data/blog";
+import { SITE_URL } from "@/lib/site-url";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
+const siteUrl = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/common/PageHero";
 import { blogPosts } from "@/src/data/blog";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Publishing Blog | Book Marketing & Writing Tips | USA Ghost Writer",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "Publishing Blog | Book Marketing & Writing Tips | USA Ghost Writer",
     description:
       "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog`,
+    url: `${SITE_URL}/blog`,
     type: "website",
   },
   twitter: {
@@ -21,15 +22,15 @@ export const metadata: Metadata = {
     description:
       "Insights on publishing, editing, and book marketing for independent authors. Tips to help you write, publish, and promote your book.",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog` },
+  alternates: { canonical: `${SITE_URL}/blog` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/blog` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
   ],
 };
 

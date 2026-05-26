@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | USA Ghost Writer",
@@ -7,18 +8,18 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Terms & Conditions | USA Ghost Writer",
     description: "Review the terms governing the use of USA Ghost Writer services, payment terms, and intellectual property policies.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions`,
+    url: `${SITE_URL}/terms-and-conditions`,
     type: "website",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions` },
+  alternates: { canonical: `${SITE_URL}/terms-and-conditions` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/terms-and-conditions` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Terms & Conditions", item: `${SITE_URL}/terms-and-conditions` },
   ],
 };
 

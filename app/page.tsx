@@ -14,6 +14,7 @@ import { homeFaqs } from "@/src/data/faqs";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { AwardsSection } from "@/components/sections/AwardsSection";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
@@ -23,11 +24,11 @@ export const metadata: Metadata = {
     title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
     description:
       "Self-publishing services: editing, formatting, and distribution to get your book to market faster. Professional support and launch help — start today.",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    url: SITE_URL,
     siteName: "USA Ghost Writer",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/social/og-home.webp`,
+        url: `${SITE_URL}/social/og-home.webp`,
         width: 1200,
         height: 630,
         alt: "USA Ghost Writer — Self-Publishing Services",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     title: "Self-Publishing Services | Book Editing | USA Ghost Writer",
     description:
       "Self-publishing services: editing, formatting, and distribution to get your book to market faster. Professional support and launch help — start today.",
-    images: [`${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/social/og-home.webp`],
+    images: [`${SITE_URL}/social/og-home.webp`],
   },
   robots: {
     index: true,
@@ -56,10 +57,10 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "USA Ghost Writer",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/our-cradibility/logo.webp`,
+      url: `${SITE_URL}/our-cradibility/logo.webp`,
     },
     contactPoint: [
       {
@@ -81,10 +82,10 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "USA Ghost Writer",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com",
+    url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/search?q={search_term_string}`,
+      target: `${SITE_URL}/search?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };

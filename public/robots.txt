@@ -10,4 +10,4 @@ Disallow: /private/
 Disallow: /*?search=
 Disallow: /*?sort=
 
-Sitemap: https://usaghostwriter.com/sitemap.xml
+Sitemap: https://www.usaghostwriter.com/sitemap.xml

@@ -5,6 +5,7 @@ import { publishingPackages } from "@/src/data/packages";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { homeFaqs } from "@/src/data/faqs";
 import FaqJsonLd from "@/components/seo/FaqJsonLd";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Publishing Packages | Prices & Tiers | USA Ghost Writer",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     title: "Publishing Packages | Prices & Tiers | USA Ghost Writer",
     description:
       "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages`,
+    url: `${SITE_URL}/packages`,
     type: "website",
   },
   twitter: {
@@ -23,15 +24,15 @@ export const metadata: Metadata = {
     description:
       "Compare publishing packages, pricing, and what's included to choose the right tier for your manuscript and goals. Start your project today.",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages` },
+  alternates: { canonical: `${SITE_URL}/packages` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Packages", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/packages` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Packages", item: `${SITE_URL}/packages` },
   ],
 };
 

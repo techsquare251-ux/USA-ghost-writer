@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { ServiceCard } from "@/components/common/ServiceCard";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { services } from "@/src/data/services";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "Publishing Services | Ghostwriting & Editing | USA Ghost Writer",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     title: "Publishing Services | Ghostwriting & Editing | USA Ghost Writer",
     description:
       "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services`,
+    url: `${SITE_URL}/services`,
     siteName: "USA Ghost Writer",
     type: "website",
   },
@@ -23,15 +24,15 @@ export const metadata: Metadata = {
     description:
       "Publishing services: ghostwriting, editing, design, and distribution to bring your book to market professionally. Explore our offerings.",
   },
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services` },
+  alternates: { canonical: `${SITE_URL}/services` },
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com" },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services` },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
   ],
 };
 

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const siteUrl = process.env.SITE_URL || 'https://usaghostwriter.com';
+const siteUrl = process.env.SITE_URL || 'https://www.usaghostwriter.com';
 
 const blog = require('../src/data/blog').blogPosts || [];
 const services = require('../src/data/services').services || [];

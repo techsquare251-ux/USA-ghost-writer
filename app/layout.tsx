@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Chatbot from "@/components/chatbot/Chatbot";
+import { SITE_URL } from "@/lib/site-url";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +33,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://usaghostwriter.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "USA Ghost Writer",
     template: "%s | USA Ghost Writer",
@@ -45,13 +46,17 @@ export const metadata: Metadata = {
     title: "USA Ghost Writer",
     description:
       "Professional self-publishing services for authors who want premium results.",
-    url: "https://usaghostwriter.com",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: "USA Ghost Writer",
     description:
       "Professional self-publishing services for authors who want premium results.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
   alternates: {
     canonical: "/",
@@ -71,7 +76,6 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="index, follow" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" as="image" href="/hero-bg2.jpeg" fetchPriority="high" />

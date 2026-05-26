@@ -10,6 +10,7 @@ import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { getServiceBySlug, serviceSlugs, services } from "@/src/data/services";
 import { ServiceCard } from "@/components/common/ServiceCard";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
+import { SITE_URL } from "@/lib/site-url";
 
 // Local image map (files under `public/our-services/`).
 const serviceImages: Record<string, string> = {
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     openGraph: {
       title: `${service.title} | Publishing Service | USA Ghost Writer`,
       description: service.description,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services/${service.slug}`,
+      url: `${SITE_URL}/services/${service.slug}`,
       type: "website",
     },
     twitter: {
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: `${service.title} | Publishing Service | USA Ghost Writer`,
       description: service.description,
     },
-    alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com"}/services/${service.slug}` },
+    alternates: { canonical: `${SITE_URL}/services/${service.slug}` },
   };
 }
 
@@ -109,7 +110,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 3);
   const serviceFaqs = buildServiceFaqs(service.title);
   const processSteps = buildProcess(service.title);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://usaghostwriter.com";
+  const siteUrl = SITE_URL;
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
