@@ -67,6 +67,9 @@ export function ContactFormSection() {
               alt="Publishing consultant ready to assist authors"
               width={900}
               height={600}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={75}
+              priority
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />

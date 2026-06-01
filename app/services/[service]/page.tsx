@@ -35,6 +35,38 @@ type ServicePageProps = {
   };
 };
 
+type ServiceLongFormContent = {
+  seoDescription: string;
+  lastUpdated: string;
+  overview: string[];
+  audience: string[];
+  deliverables: string[];
+};
+
+function buildLongFormContent(service: { title: string; description: string; features: string[]; slug: string }): ServiceLongFormContent {
+  const featureList = service.features.join(", ");
+  const audience = [
+    `Authors who want dependable ${service.title.toLowerCase()} support without losing their original voice or publishing goals.`,
+    "Independent publishers who need production-ready deliverables aligned with marketplace and platform requirements.",
+    "Teams preparing a launch timeline and looking for clear scope, milestone visibility, and quality checkpoints.",
+  ];
+
+  const deliverables = service.features.map(
+    (feature) => `${feature}: delivered with documented quality checks, implementation notes, and practical handoff guidance.`
+  );
+
+  return {
+    seoDescription: `${service.title} services for authors and publishers. Get strategic planning, expert execution, and measurable delivery quality from USA Ghost Writer.`,
+    lastUpdated: "2026-06-01",
+    overview: [
+      `${service.title} is a high-impact stage in your publishing workflow because it directly affects reader experience, conversion quality, and long-term brand trust. At USA Ghost Writer, we treat this service as both a craft process and an execution system: we map your manuscript goals, define approval checkpoints, and align every deliverable with final publishing requirements. This reduces rework and protects launch timelines while maintaining consistent quality standards from first draft to release-ready output.`,
+      `Our ${service.title.toLowerCase()} workflow is built around practical outcomes rather than generic checklists. We focus on what your manuscript needs to perform in real market conditions, including presentation quality, platform compatibility, and audience expectations. Core scope typically includes ${featureList}. Every stage is reviewed with structured QA so decisions are documented, revisions are controlled, and final assets are delivered in a format your next publishing step can use immediately.`,
+    ],
+    audience,
+    deliverables,
+  };
+}
+
 export function generateStaticParams() {
   return serviceSlugs.map((service) => ({ service }));
 }
@@ -48,21 +80,26 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
 
+  const longForm = buildLongFormContent(service);
+
   return {
     title: `${service.title} | Publishing Service | USA Ghost Writer`,
-    description: service.description,
+    description: longForm.seoDescription,
     openGraph: {
       title: `${service.title} | Publishing Service | USA Ghost Writer`,
-      description: service.description,
+      description: longForm.seoDescription,
       url: `${SITE_URL}/services/${service.slug}`,
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: `${service.title} | Publishing Service | USA Ghost Writer`,
-      description: service.description,
+      description: longForm.seoDescription,
     },
     alternates: { canonical: `${SITE_URL}/services/${service.slug}` },
+    other: {
+      "last-modified": longForm.lastUpdated,
+    },
   };
 }
 
@@ -83,23 +120,6 @@ function buildServiceFaqs(serviceTitle: string) {
   ];
 }
 
-function buildProcess(serviceTitle: string) {
-  return [
-    {
-      title: "Discovery",
-      description: `We assess your manuscript and define goals specific to ${serviceTitle.toLowerCase()}.`,
-    },
-    {
-      title: "Execution",
-      description: "Our specialists complete scoped deliverables with iterative quality checks.",
-    },
-    {
-      title: "Delivery",
-      description: "Final outputs are shared with implementation guidance and revision support.",
-    },
-  ];
-}
-
 export default function ServiceDetailPage({ params }: ServicePageProps) {
   const service = getServiceBySlug(params.service);
 
@@ -108,8 +128,8 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
   }
 
   const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 3);
+  const longForm = buildLongFormContent(service);
   const serviceFaqs = buildServiceFaqs(service.title);
-  const processSteps = buildProcess(service.title);
   const siteUrl = SITE_URL;
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -123,6 +143,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     },
     areaServed: "Global",
     url: `${siteUrl}/services/${service.slug}`,
+    dateModified: longForm.lastUpdated,
   };
 
   const breadcrumbSchema = {
@@ -151,6 +172,9 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             alt={`${service.title} preview`}
             width={920}
             height={1080}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={75}
+            priority
             className="h-full w-full rounded-xl object-cover object-center"
           />
         </div>
@@ -165,6 +189,51 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-container px-4 py-10">
+        <SectionHeader
+          eyebrow="Service Overview"
+          title={`${service.title}: Detailed Scope & Execution`}
+          subtitle="Expanded detail to help search engines and authors understand service depth, workflow, and expected outcomes."
+        />
+
+        <div className="mt-6 space-y-4 rounded-xl border border-brand-green/10 bg-white p-6">
+          {longForm.overview.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)} className="text-sm leading-7 text-brand-muted">
+              {paragraph}
+            </p>
+          ))}
+          <p className="text-xs font-medium uppercase tracking-[0.12em] text-brand-muted">
+            Last updated: {longForm.lastUpdated}
+          </p>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <article className="rounded-xl border border-brand-green/10 bg-brand-cream p-5">
+            <h3 className="text-lg font-semibold text-brand-charcoal">Who This Service Is For</h3>
+            <ul className="mt-3 space-y-2 text-sm leading-7 text-brand-muted">
+              {longForm.audience.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-2 size-1.5 rounded-full bg-brand-green" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="rounded-xl border border-brand-green/10 bg-white p-5">
+            <h3 className="text-lg font-semibold text-brand-charcoal">Typical Deliverables</h3>
+            <ul className="mt-3 space-y-2 text-sm leading-7 text-brand-muted">
+              {longForm.deliverables.map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="mt-2 size-1.5 rounded-full bg-brand-green" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
         </div>
       </section>
 
@@ -191,19 +260,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      {/* <section className="mx-auto max-w-container px-4 py-10"> */}
-        <ProcessTimeline/>
-        {/* <SectionHeader centered eyebrow="Our Process" title="A Clear 3-Step Workflow" />
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {processSteps.map((step, idx) => (
-            <article key={step.title} className="rounded-xl border border-brand-green/10 bg-brand-cream p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-green">Step {idx + 1}</p>
-              <h3 className="mt-2 text-lg font-semibold text-brand-charcoal">{step.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-brand-muted">{step.description}</p>
-            </article>
-          ))}
-        </div> */}
-      {/* </section> */}
+      <ProcessTimeline/>
 
       <section className="mx-auto max-w-container px-4 py-10">
         <SectionHeader centered eyebrow="Related" title="Related Services" />

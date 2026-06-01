@@ -50,6 +50,8 @@ export default function BlogPage() {
               alt={featured.title}
               width={1200}
               height={760}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
               className="h-full w-full object-cover"
               priority
             />

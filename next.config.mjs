@@ -16,6 +16,25 @@ const nextConfig = {
 			},
 		],
 	},
+	async redirects() {
+		return [
+			{
+				source: "/:path*",
+				has: [{ type: "host", value: "usaghostwriter.com" }],
+				destination: "https://www.usaghostwriter.com/:path*",
+				permanent: true,
+			},
+		];
+	},
+	async headers() {
+		return [
+			{
+				source: "/contact-us",
+				has: [{ type: "query", key: "package" }],
+				headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
+			},
+		];
+	},
 };
 
 export default nextConfig;

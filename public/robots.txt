@@ -9,5 +9,6 @@ Disallow: /wp-admin/
 Disallow: /private/
 Disallow: /*?search=
 Disallow: /*?sort=
+Disallow: /contact-us?package=*
 
 Sitemap: https://www.usaghostwriter.com/sitemap.xml

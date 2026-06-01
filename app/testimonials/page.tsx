@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/testimonials`,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Testimonials & Reviews | Author Feedback | USA Ghost Writer",
+    description: "Read verified testimonials and reviews from authors who worked with USA Ghost Writer to publish their books.",
+  },
   alternates: { canonical: `${SITE_URL}/testimonials` },
 };
 

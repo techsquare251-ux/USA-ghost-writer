@@ -53,20 +53,27 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const businessAddress = {
+    "@type": "PostalAddress",
+    streetAddress: "811 W 7th St",
+    addressLocality: "Los Angeles",
+    postalCode: "90017",
+    addressCountry: "US",
+  };
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "USA Ghost Writer",
     url: SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/our-cradibility/logo.webp`,
-    },
+    logo: `${SITE_URL}/usa-logo.jpeg`,
+    telephone: "+12132674279",
+    address: businessAddress,
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        telephone: "+1-866-333-4444",
+        telephone: "+12132674279",
         email: "support@usaghostwriter.com",
       },
     ],
@@ -78,6 +85,17 @@ export default function Home() {
       "https://www.youtube.com/@usaghostwriter",
     ],
   };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "USA Ghost Writer",
+    url: SITE_URL,
+    logo: `${SITE_URL}/usa-logo.jpeg`,
+    telephone: "+12132674279",
+    address: businessAddress,
+  };
+
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -95,6 +113,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
       <script
         type="application/ld+json"

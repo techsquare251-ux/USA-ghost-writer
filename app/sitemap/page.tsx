@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site-url";
+import { serviceSlugs } from "@/src/data/services";
+import { blogPosts } from "@/src/data/blog";
 
 export const metadata: Metadata = {
   title: "Sitemap | USA Ghost Writer",
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function SitemapPage() {
-  const links = [
+  const baseLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
@@ -21,6 +23,18 @@ export default function SitemapPage() {
     { href: "/privacy-policy", label: "Privacy Policy" },
     { href: "/terms-and-conditions", label: "Terms & Conditions" },
   ];
+
+  const serviceLinks = serviceSlugs.map((slug) => ({
+    href: `/services/${slug}`,
+    label: `Service: ${slug.replace(/-/g, " ")}`,
+  }));
+
+  const blogLinks = blogPosts.map((post) => ({
+    href: `/blog/${post.slug}`,
+    label: `Blog: ${post.title}`,
+  }));
+
+  const links = [...baseLinks, ...serviceLinks, ...blogLinks];
 
   return (
     <main className="mx-auto max-w-container px-4 py-12">
