@@ -9,6 +9,7 @@ import { PackagesSection } from "@/components/sections/PackagesSection";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
+import { VideoReviewSection } from "@/components/sections/VideoReviewSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { homeFaqs } from "@/src/data/faqs";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -151,12 +152,15 @@ export default function Home() {
         <WhyChooseUsSection />
       </MotionReveal>
       <MotionReveal delay={0.18}>
-        <TestimonialsSection />
+        <VideoReviewSection />
       </MotionReveal>
       <MotionReveal delay={0.2}>
-        <FAQAccordion items={homeFaqs} />
+        <TestimonialsSection />
       </MotionReveal>
       <MotionReveal delay={0.22}>
+        <FAQAccordion items={homeFaqs} />
+      </MotionReveal>
+      <MotionReveal delay={0.24}>
         <ContactFormSection />
       </MotionReveal>
       {/* <MotionReveal delay={0.24}>
